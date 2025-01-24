@@ -72,3 +72,45 @@
         <!-- ./col -->
       </div>
       <!-- /.row -->
+
+
+
+
+
+      <!-- Para el logo en el inicio(pagina principal) -->
+
+    <div class="box box primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Logotipo</h3>
+
+      </div>
+
+      <div class="box-body">
+        <div class="form-group">
+          <label>Cambiar Logotipo</label>
+          <p class="pull-right">
+            <img src="" class="img-thumbnail" alt="">
+          </p>
+          <input type="file" id="SubirLogo">
+          <p class="help-block">Tamaño recomendado 500px*100px</p>
+
+        </div>
+
+      </div>
+
+      <div class="box-footer">
+        <button type="button" id="guardarLogo" class="btn btn-primary pull-right">Guardar</button>
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    

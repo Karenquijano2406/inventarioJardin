@@ -21,12 +21,19 @@
         
         
 
-        <?php 
+      <?php 
         include "inicio/cajasSuperiores.php";
         
-        ?>
+      ?>
 
         
       </div>
+    
 
+   
+
+
+
+    
     </section>
+</div>
