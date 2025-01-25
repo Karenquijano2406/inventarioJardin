@@ -46,6 +46,8 @@ session_start();
   <!-- DataTables -->
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+
+
  <!-- Fin de los  ESTILOS css -->
 
 
@@ -107,8 +109,10 @@ session_start();
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
+
 <!-- aqui empieza el cuerpo del proyecto, es decir en el body -->
 <body class="hold-transition skin-blue sidebar-mini login-page">
+    
 
 
 
@@ -166,6 +170,7 @@ include "modulos/footer.php";
 <!-- llamando a plantilla.js -->
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
+<script src="vistas/js/logos.js"></script>
 
 
 

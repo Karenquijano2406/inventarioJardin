@@ -86,12 +86,42 @@
       </div>
 
       <div class="box-body">
+      <div class="form-group">
+    <label>Cambiar Logotipo</label>
+    <p class="pull-right">
+    <img src="" class="img-thumbnail previsualizarLogo" alt="Previsualización del logo">
+    </p>
+    <input type="file" id="SubirLogo" accept="image/jpeg, image/png">
+    <p class="help-block">Tamaño recomendado: 500px × 100px</p>
+      </div>
+
+
+      </div>
+
+      <div class="box-footer">
+        <button type="button" id="guardarLogo" class="btn btn-primary pull-right">Guardar Logo</button>
+
+      </div>
+
+    </div>
+
+    <!--  Termina la parte de el logo en el inicio(pagina principal) -->
+
+
+    <!-- Datos para cambiar el icono -->
+    <div class="box box primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">ÍCONO</h3>
+
+      </div>
+
+      <div class="box-body">
         <div class="form-group">
-          <label>Cambiar Logotipo</label>
+          <label>Cambiar Ícono</label>
           <p class="pull-right">
             <img src="" class="img-thumbnail" alt="">
           </p>
-          <input type="file" id="SubirLogo">
+          <input type="file" id="SubirIcono">
           <p class="help-block">Tamaño recomendado 500px*100px</p>
 
         </div>
@@ -99,7 +129,7 @@
       </div>
 
       <div class="box-footer">
-        <button type="button" id="guardarLogo" class="btn btn-primary pull-right">Guardar</button>
+        <button type="button" id="guardarIcono" class="btn btn-primary pull-right">Guardar ícono</button>
 
       </div>
 
