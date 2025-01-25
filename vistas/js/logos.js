@@ -48,3 +48,46 @@ $("#SubirLogo").change(function () {
     
 });
 
+
+
+$("#guardarLogo").click(function(){
+
+    var datos = new FormData();
+
+    datos .append("imagenLogo", imagenLogo);
+
+    $.ajax({
+        url: "ajax/logo.ajax.php",
+        method: "POST",
+        data: $datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+            console.log(respuesta);  // Verifica si los datos que recibes son correctos
+
+            if (respuesta == "ok") {
+
+                swal({
+                    type: "success",
+                    title: "El logo ha sido cambiado correctamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar"
+                }).then(function(result) {
+                    if (result.value) {
+                        window.location = "inicio";
+                    }
+                });
+                
+            }
+
+            
+        },
+        error: function(xhr, status, error) {
+            console.error("Error en la solicitud AJAX:", error);  // Verifica si hay algún error en la solicitud AJAX
+        }
+    });
+
+})
+
