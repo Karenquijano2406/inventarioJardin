@@ -22,7 +22,28 @@
             <span class="pull-right-container">
             </span>
           </a>
-        </li>
+      </li>
+
+
+      <li>
+          <a href="empresa">
+          <i class="fa fa-building"></i> <span>Empresa</span>
+          <span class="pull-right-container">
+          </span>
+          </a>
+      </li>
+
+
+      <li>
+          <a href="categorias">
+          <i class="fa fa-th"></i> <span>Categorías</span>
+          <span class="pull-right-container">
+          </span>
+          </a>
+      </li>
+
+
+
 
         <li>
           <a href="usuarios">
@@ -50,6 +71,24 @@
           </ul>
         </li>
 
+
+
+        <li>
+          <a href="clientes">
+          <i class="fa fa-user"></i> <span>Clientes</span>
+          <span class="pull-right-container">
+          </span>
+          </a>
+      </li>
+
+
+      <li>
+          <a href="proveedores">
+          <i class="fa fa-truck"></i> <span>Proveedores</span>
+          <span class="pull-right-container">
+          </span>
+          </a>
+      </li>
 
 
        

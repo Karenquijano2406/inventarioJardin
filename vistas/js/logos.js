@@ -46,15 +46,16 @@ $("#SubirLogo").change(function () {
 
 
     
-});
+
 
 
 
 $("#guardarLogo").click(function(){
 
+   
     var datos = new FormData();
 
-    datos .append("imagenLogo", imagenLogo);
+    datos .append("imagen", imagen);
 
     $.ajax({
         url: "ajax/logo.ajax.php",
@@ -63,7 +64,7 @@ $("#guardarLogo").click(function(){
         cache: false,
         contentType: false,
         processData: false,
-        dataType: "json",
+        
         success: function(respuesta) {
             console.log(respuesta);  // Verifica si los datos que recibes son correctos
 
@@ -90,4 +91,5 @@ $("#guardarLogo").click(function(){
     });
 
 })
+});
 
