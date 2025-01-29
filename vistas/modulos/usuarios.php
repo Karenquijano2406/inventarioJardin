@@ -230,6 +230,7 @@
 
               <!-- Ingresar nombre -->
                 <div class="form-group">
+                <label>Nombre:</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                     <input type="text" class="form-control input-lg" name="editarNombre" id="editarNombre">
@@ -243,6 +244,7 @@
 <!-- 
                 ingresar usuario -->
                 <div class="form-group">
+                <label>Usuario</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-users"></i></span>
                     <input type="text" class="form-control input-lg" name="editarUsuario" id="editarUsuario">
@@ -254,6 +256,7 @@
 <!-- 
                 ingresar password -->
                 <div class="form-group">
+                <label>Contraseña:</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                     <input type="password" class="form-control input-lg" name="editarPassword">
@@ -264,6 +267,7 @@
 
                 <!-- ingresar perfil -->
                 <div class="form-group">
+                <label>Perfil:</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-edit"></i></span>
                     <select class="form-control input-lg" name="editarPerfil" id="editarPerfil">

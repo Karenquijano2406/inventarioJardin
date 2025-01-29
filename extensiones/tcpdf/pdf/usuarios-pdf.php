@@ -57,7 +57,7 @@ class ImprimirUsuarios {
                         <br>
                         <strong>Dirección:</strong> '.$valores["direccion"].'
                         <br>
-                        <strong>Facebook:</strong> "Jardín de Edith": '.$valores["sitioweb"].'
+                        <strong>Sitio Web:</strong> '.$valores["sitioweb"].'
                         <br>
                         <strong>Teléfono:</strong> '.$valores["telefono"].'
                         <br>
