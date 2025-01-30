@@ -19,14 +19,12 @@ class ModeloCategorias {
     }
 
 
-    static public function mdlEditarUsuarios($tabla, $datos) {
-        $stmt = Conexion::Conectar()->prepare("UPDATE $tabla SET nombre = :nombre, usuario = :usuario, password = :password, perfil = :perfil WHERE id = :id");
+    static public function mdlEditarCategorias($tabla, $datos) {
+        $stmt = Conexion::Conectar()->prepare("UPDATE $tabla SET nombre = :nombre WHERE id = :id");
 
         $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-        $stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
-        $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR); // Contraseña encriptada
-        $stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
+       
 
         if ($stmt->execute()) {
             return "ok";
@@ -56,7 +54,7 @@ class ModeloCategorias {
     }
 
 
-    static public function mdlBorrarUsuarios($tabla,$datos){
+    static public function mdlBorrarCategorias($tabla,$datos){
 
         $stmt = Conexion::Conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
 

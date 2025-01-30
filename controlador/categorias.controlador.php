@@ -55,32 +55,28 @@ class ControladorCategorias {
         
     }
 
-    static public function ctrEditarUsuarios() {
-        if (isset($_POST["editarUsuario"])) {
-            $tabla = "usuarios";
+    static public function ctrEditarCategorias() {
+        if (isset($_POST["editarNombreC"])) {
+            $tabla = "categorias";
 
-            // Encriptar la contraseña
-            $passwordEncriptado = password_hash($_POST["editarPassword"], PASSWORD_DEFAULT);
 
             $datos = array("id" => $_POST['id'],
-                "nombre" => $_POST['editarNombre'],
-                "usuario" => $_POST['editarUsuario'],
-                "password" => $passwordEncriptado,
-                "perfil" => $_POST['editarPerfil']
+                "nombre" => $_POST['editarNombreC'],
+               
             );
 
-            $respuesta = ModeloUsuarios::mdlEditarUsuarios($tabla, $datos);
+            $respuesta = ModeloCategorias::mdlEditarCategorias($tabla, $datos);
 
             if ($respuesta == "ok") {
                 echo '<script>
                     swal({
                         type: "success",
-                        title: "El usuario ha sido editado correctamente",
+                        title: "La categoria ha sido editada correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "usuarios";
+                            window.location = "categorias";
                         }
                     });
                 </script>';
@@ -90,12 +86,12 @@ class ControladorCategorias {
                 echo '<script>
                     swal({
                         type: "error",
-                        title: "El usuario no ha sido editado correctamente",
+                        title: "La categoria no ha sido editada correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "usuarios";
+                            window.location = "categorias";
                         }
                     });
                 </script>';
@@ -109,26 +105,26 @@ class ControladorCategorias {
 
 
 
-    static public function ctrBorrarUsuarios(){
+    static public function ctrBorrarCategorias(){
 
-        if (isset($_GET['idUsuario'])) {
+        if (isset($_GET['idCategoria'])) {
             
-            $tabla = "usuarios";
-            $datos = $_GET['idUsuario'];
+            $tabla = "categorias";
+            $datos = $_GET['idCategoria'];
 
-            $respuesta = ModeloUsuarios::mdlBorrarUsuarios($tabla,$datos);
+            $respuesta = ModeloCategorias::mdlBorrarCategorias($tabla,$datos);
 
             if ($respuesta == "ok") {
                 
                 echo '<script>
                     swal({
                         type: "success",
-                        title: "El usuario ha sido eliminado correctamente",
+                        title: "La categoria ha sido eliminada correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "usuarios";
+                            window.location = "categorias";
                         }
                     });
                 </script>';

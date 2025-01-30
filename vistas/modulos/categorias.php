@@ -74,8 +74,8 @@
 
                     <td>
 
-                    <button class="btn btn-primary btnEditarUsuarios" data-toggle="modal" data-target="#modalEditarUsuarios" idUsuario="'.$datos["id"].'">Editar</button>
-                    <button class="btn btn-danger btnEliminarUsuario" idUsuario="'.$datos["id"].'">Eliminar</button>
+                    <button class="btn btn-primary btnEditarCategoria" data-toggle="modal" data-target="#modalEditarCategoria" idCategoria="'.$datos["id"].'">Editar</button>
+                    <button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$datos["id"].'">Eliminar</button>
                     
                     </td>
                   
@@ -176,25 +176,27 @@
 
 
 
-   <!-- ventana modal Editar usuarios -->
-   <div id="modalEditarUsuarios" class="modal fade" role="dialog">
+   <!-- ventana modal Editar categoria -->
+   <div id="modalEditarCategoria" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <form role="form" method="post" enctype="multipart/form-data">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Editar Usuario</h4>
+              <h4 class="modal-title">Editar Categoria</h4>
 
             </div>
             <div class="modal-body">
               <div class="box-body">
 
-              <!-- Ingresar nombre -->
+
+
+              <!-- Ingresar nombre categoria -->
                 <div class="form-group">
                 <label>Nombre:</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control input-lg" name="editarNombre" id="editarNombre">
+                    <input type="text" class="form-control input-lg" name="editarNombreC" id="editarNombreC">
 
                   <!-- para que me edite uno por uno los usuarios, ya que antes al editar me editaba los de toda la tabla -->
                     <input type="hidden" name="id" id="id">
@@ -202,41 +204,7 @@
                   </div>
 
                 </div>
-<!-- 
-                ingresar usuario -->
-                <div class="form-group">
-                <label>Usuario</label>
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                    <input type="text" class="form-control input-lg" name="editarUsuario" id="editarUsuario">
 
-                  </div>
-
-                </div>
-
-<!-- 
-                ingresar password -->
-                <div class="form-group">
-                <label>Contraseña:</label>
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control input-lg" name="editarPassword">
-
-                  </div>
-
-                </div>
-
-                <!-- ingresar perfil -->
-                <div class="form-group">
-                <label>Perfil:</label>
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                    <select class="form-control input-lg" name="editarPerfil" id="editarPerfil">
-                    <option value="Administrador">Administrador</option>
-                    <option value="Especial">Especial</option>
-                    </select>
-                  </div>
-                </div>
 
 
 
@@ -261,8 +229,8 @@
 
         <?php 
 
-         $editarUsuario = new ControladorUsuarios();
-         $editarUsuario->ctrEditarUsuarios();
+         $editar = new ControladorCategorias();
+         $editar->ctrEditarCategorias();
         
         ?>
 
@@ -276,8 +244,8 @@
 
    <?php 
 
-        $EliminarUsuario = new ControladorUsuarios();
-        $EliminarUsuario->ctrBorrarUsuarios();
+        $Eliminar = new ControladorCategorias();
+        $Eliminar->ctrBorrarCategorias();
         
         ?>
 
