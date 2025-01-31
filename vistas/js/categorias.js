@@ -60,32 +60,33 @@ $(".tablas").on("click", ".btnEliminarCategoria", function(){
   })
 
 
-  $(".display").on("click", ".btnImprimirExcel", function(){
 
-    window.open("vistas/modulos/usuarios-excel.php?usuariosExcel=usuariosExcel", "blank");
+  $(".display").on("click", ".btnImprimirExcelCategorias", function(){
+
+    window.open("vistas/modulos/categorias-excel.php?categoriasExcel=categoriasExcel", "blank");
   });
 
 
-  $(".display").on("click", ".btnImprimirWord", function(){
+  $(".display").on("click", ".btnImprimirWordCategorias", function(){
 
-    window.open("vistas/modulos/usuarios-word.php?usuariosWord=usuariosWord", "blank");
+    window.open("vistas/modulos/categorias-word.php?categoriasWord=categoriasWord", "blank");
   });
 
 
-  $(".display").on("click", ".btnImprimirCSV", function(){
+  $(".display").on("click", ".btnImprimirCSVCategorias", function(){
 
-    window.open("vistas/modulos/usuarios-csv.php?usuariosCSV=usuariosCSV", "blank");
+    window.open("vistas/modulos/categorias-csv.php?categoriasCSV=categoriasCSV", "blank");
   });
 
 
-   $(".display").on("click", ".btnImprimirPDF", function(){
+   $(".display").on("click", ".btnImprimirPDFCategorias", function(){
 
-  window.open("extensiones/tcpdf/pdf/usuarios-pdf.php", "blank");
+  window.open("extensiones/tcpdf/pdf/categorias-pdf.php", "blank");
    });
 
 
-   $(".display").on("click", ".btnImprimirPDFHorizontal", function(){
+   $(".display").on("click", ".btnImprimirPDFHorizontalCategorias", function(){
 
-    window.open("extensiones/tcpdf/pdf/usuarios-horizontal-pdf.php", "blank");
+    window.open("extensiones/tcpdf/pdf/categorias-horizontal-pdf.php", "blank");
      });
 

@@ -26,11 +26,11 @@
               
               <!-- Botones para generar reportes -->
 
-          <a href="vistas/modulos/usuarios-excel.php?usuariosExcel=usuarios" class="btn btn-success">Categorias Excel</a>
+          <a href="vistas/modulos/categorias-excel.php?categoriasExcel=categoriasExcel" class="btn btn-success">Categorias Excel</a>
 
-          <a href="vistas/modulos/usuarios-word.php?usuariosWord=usuarios" class="btn btn-primary">Categorias Word</a>
+          <a href="vistas/modulos/categorias-word.php?categoriasWord=categoriasWord" class="btn btn-primary">Categorias Word</a>
 
-          <a href="vistas/modulos/usuarios-csv.php?usuariosCSV=usuarios" class="btn btn-warning">Categorias CSV</a>
+          <a href="vistas/modulos/categorias-csv.php?categoriasCSV=categoriasCSV" class="btn btn-warning">Categorias CSV</a>
 
           <a href="extensiones/tcpdf/pdf/usuarios-pdf.php" class="btn btn-danger">Categorias PDF</a>
 

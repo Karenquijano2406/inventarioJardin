@@ -57,7 +57,7 @@
         
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-product-hunt"></i> <span>Productos</span>
+            <i class="fa fa-cubes"></i> <span>Almacén</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

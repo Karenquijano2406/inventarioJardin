@@ -137,19 +137,19 @@ class ControladorCategorias {
 
 
 
-    public function ctrDescargarReportesExcelUsuarios() {
-        if (isset($_GET["usuariosExcel"])) {
+    public function ctrDescargarReportesExcelCategorias() {
+        if (isset($_GET["categoriasExcel"])) {
             
-            $tabla = "usuarios";
+            $tabla = "categorias";
             $item = null;
             $valor = null;
     
-            // Obtener los usuarios desde el modelo
-            $usuarios = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+            // Obtener las categorias desde el modelo
+            $categorias = ModeloCategorias::mdlMostrarCategorias($tabla, $item, $valor);
         }
     
         // Nombre del archivo Excel a generar
-        $name = $_GET["usuariosExcel"] . '.xls';
+        $name = $_GET["categoriasExcel"] . '.xls';
     
         // Configuración de los encabezados HTTP para descarga de archivo Excel
         header('Expires: 0');
@@ -161,17 +161,13 @@ class ControladorCategorias {
         echo utf8_decode("<table border='1'>
             <tr>
                 <td style='text-align:center; font-weight:bold;'>Nombre</td>
-                <td style='text-align:center; font-weight:bold;'>Usuario</td>
-                <td style='text-align:center; font-weight:bold;'>Perfil</td>
-                <td style='text-align:center; font-weight:bold;'>Fecha</td>
+                <td style='text-align:center; font-weight:bold;'>Fecha de Entrada</td>
             </tr>");
     
-        // Recorrer los usuarios y generar las filas de la tabla
-        foreach ($usuarios as $key => $datos) {
+        // Recorrer las categorias y generar las filas de la tabla
+        foreach ($categorias as $key => $datos) {
             echo utf8_decode("<tr>
                 <td style='text-align:center;'>" . $datos["nombre"] . "</td>
-                <td style='text-align:center;'>" . $datos["usuario"] . "</td>
-                <td style='text-align:center;'>" . $datos["perfil"] . "</td>
                 <td style='text-align:center;'>" . $datos["fecha"] . "</td>
             </tr>");
         }
@@ -185,19 +181,19 @@ class ControladorCategorias {
 
 
 
-    public function ctrDescargarReportesWordUsuarios() {
-        if (isset($_GET["usuariosWord"])) {
+    public function ctrDescargarReportesWordCategorias() {
+        if (isset($_GET["categoriasWord"])) {
             
-            $tabla = "usuarios";
+            $tabla = "categorias";
             $item = null;
             $valor = null;
     
             // Obtener los usuarios desde el modelo
-            $usuarios = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+            $categorias = ModeloCategorias::mdlMostrarCategorias($tabla, $item, $valor);
         }
     
         // Nombre del archivo Word a generar
-        $name = $_GET["usuariosWord"] . '.doc';
+        $name = $_GET["categoriasWord"] . '.doc';
     
         // Configuración de los encabezados HTTP para descarga de archivo Word
         header('Expires: 0');
@@ -209,17 +205,13 @@ class ControladorCategorias {
         echo utf8_decode("<table border='1'>
             <tr>
                 <td style='text-align:center; font-weight:bold;'>Nombre</td>
-                <td style='text-align:center; font-weight:bold;'>Usuario</td>
-                <td style='text-align:center; font-weight:bold;'>Perfil</td>
-                <td style='text-align:center; font-weight:bold;'>Fecha</td>
+                <td style='text-align:center; font-weight:bold;'>Fecha de Entrada</td>
             </tr>");
     
         // Recorrer los usuarios y generar las filas de la tabla
-        foreach ($usuarios as $key => $datos) {
+        foreach ($categorias as $key => $datos) {
             echo utf8_decode("<tr>
                 <td style='text-align:center;'>" . $datos["nombre"] . "</td>
-                <td style='text-align:center;'>" . $datos["usuario"] . "</td>
-                <td style='text-align:center;'>" . $datos["perfil"] . "</td>
                 <td style='text-align:center;'>" . $datos["fecha"] . "</td>
             </tr>");
         }
@@ -232,18 +224,18 @@ class ControladorCategorias {
 
 
 
-    public function ctrDescargarReportesCSVUsuarios() {
-        if (isset($_GET["usuariosCSV"])) {
-            $tabla = "usuarios";
+    public function ctrDescargarReportesCSVCategorias() {
+        if (isset($_GET["categoriasCSV"])) {
+            $tabla = "categorias";
             $item = null;
             $valor = null;
     
             // Obtener los usuarios desde el modelo
-            $usuarios = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+            $categorias = ModeloCategorias::mdlMostrarCategorias($tabla, $item, $valor);
         }
     
         // Nombre del archivo CSV
-        $name = $_GET["usuariosCSV"] . '.csv';
+        $name = $_GET["categoriasCSV"] . '.csv';
     
         // Configuración de los encabezados HTTP
         header('Expires: 0');
@@ -253,10 +245,10 @@ class ControladorCategorias {
     
         // Crear contenido del CSV
         $datos = "";
-        $datos .= "NOMBRE,USUARIO,PERFIL,FECHA\r\n";
+        $datos .= "NOMBRE,FECHA DE ENTRADA\r\n";
     
-        foreach ($usuarios as $key => $values) {
-            $datos .= "$values[nombre],$values[usuario],$values[perfil],$values[fecha]\r\n";
+        foreach ($categorias as $key => $values) {
+            $datos .= "$values[nombre],$values[fecha]\r\n";
         }
     
         echo utf8_decode($datos);
