@@ -32,9 +32,9 @@
 
           <a href="vistas/modulos/categorias-csv.php?categoriasCSV=categoriasCSV" class="btn btn-warning">Categorias CSV</a>
 
-          <a href="extensiones/tcpdf/pdf/usuarios-pdf.php" class="btn btn-danger">Categorias PDF</a>
+          <a href="extensiones/tcpdf/pdf/categorias-pdf.php" class="btn btn-danger">Categorias PDF</a>
 
-          <a href="extensiones/tcpdf/pdf/usuarios-horizontal-pdf.php" class="btn btn-danger">Categorias PDF Horizontal</a>
+          <a href="extensiones/tcpdf/pdf/categorias-horizontal-pdf.php" class="btn btn-danger">Categorias PDF Horizontal</a>
 
           </div>
 
