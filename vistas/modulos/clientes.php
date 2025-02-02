@@ -317,8 +317,8 @@
 
    <?php 
 
-        $EliminarUsuario = new ControladorUsuarios();
-        $EliminarUsuario->ctrBorrarUsuarios();
+        $EliminarCliente = new ControladorClientes();
+        $EliminarCliente->ctrBorrarClientes();
         
         ?>
 

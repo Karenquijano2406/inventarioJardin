@@ -60,7 +60,7 @@ class ModeloClientes {
     }
 
 
-    static public function mdlBorrarUsuarios($tabla,$datos){
+    static public function mdlBorrarClientes($tabla,$datos){
 
         $stmt = Conexion::Conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
 

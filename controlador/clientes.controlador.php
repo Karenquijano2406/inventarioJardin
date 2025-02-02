@@ -111,26 +111,26 @@ class ControladorClientes {
 
 
 
-    static public function ctrBorrarUsuarios(){
+    static public function ctrBorrarClientes(){
 
-        if (isset($_GET['idUsuario'])) {
+        if (isset($_GET['idCliente'])) {
             
-            $tabla = "usuarios";
-            $datos = $_GET['idUsuario'];
+            $tabla = "clientes";
+            $datos = $_GET['idCliente'];
 
-            $respuesta = ModeloUsuarios::mdlBorrarUsuarios($tabla,$datos);
+            $respuesta = ModeloClientes::mdlBorrarClientes($tabla,$datos);
 
             if ($respuesta == "ok") {
                 
                 echo '<script>
                     swal({
                         type: "success",
-                        title: "El usuario ha sido eliminado correctamente",
+                        title: "El cliente ha sido eliminado correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "usuarios";
+                            window.location = "clientes";
                         }
                     });
                 </script>';
