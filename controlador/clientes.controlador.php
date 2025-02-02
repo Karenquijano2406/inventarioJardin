@@ -143,19 +143,19 @@ class ControladorClientes {
 
 
 
-    public function ctrDescargarReportesExcelUsuarios() {
-        if (isset($_GET["usuariosExcel"])) {
+    public function ctrDescargarReportesExcelClientes() {
+        if (isset($_GET["clientesExcel"])) {
             
-            $tabla = "usuarios";
+            $tabla = "clientes";
             $item = null;
             $valor = null;
     
-            // Obtener los usuarios desde el modelo
-            $usuarios = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+            // Obtener los clientes desde el modelo
+            $clientes = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
         }
     
         // Nombre del archivo Excel a generar
-        $name = $_GET["usuariosExcel"] . '.xls';
+        $name = $_GET["clientesExcel"] . '.xls';
     
         // Configuración de los encabezados HTTP para descarga de archivo Excel
         header('Expires: 0');
@@ -167,17 +167,19 @@ class ControladorClientes {
         echo utf8_decode("<table border='1'>
             <tr>
                 <td style='text-align:center; font-weight:bold;'>Nombre</td>
-                <td style='text-align:center; font-weight:bold;'>Usuario</td>
-                <td style='text-align:center; font-weight:bold;'>Perfil</td>
+                <td style='text-align:center; font-weight:bold;'>Correo Electrónico</td>
+                <td style='text-align:center; font-weight:bold;'>Teléfono</td>
+                <td style='text-align:center; font-weight:bold;'>Direccion</td>
                 <td style='text-align:center; font-weight:bold;'>Fecha</td>
             </tr>");
     
         // Recorrer los usuarios y generar las filas de la tabla
-        foreach ($usuarios as $key => $datos) {
+        foreach ($clientes as $key => $datos) {
             echo utf8_decode("<tr>
                 <td style='text-align:center;'>" . $datos["nombre"] . "</td>
-                <td style='text-align:center;'>" . $datos["usuario"] . "</td>
-                <td style='text-align:center;'>" . $datos["perfil"] . "</td>
+                <td style='text-align:center;'>" . $datos["correo"] . "</td>
+                <td style='text-align:center;'>" . $datos["telefono"] . "</td>
+                <td style='text-align:center;'>" . $datos["direccion"] . "</td>
                 <td style='text-align:center;'>" . $datos["fecha"] . "</td>
             </tr>");
         }
@@ -191,19 +193,19 @@ class ControladorClientes {
 
 
 
-    public function ctrDescargarReportesWordUsuarios() {
-        if (isset($_GET["usuariosWord"])) {
+    public function ctrDescargarReportesWordClientes() {
+        if (isset($_GET["clientesWord"])) {
             
-            $tabla = "usuarios";
+            $tabla = "clientes";
             $item = null;
             $valor = null;
     
-            // Obtener los usuarios desde el modelo
-            $usuarios = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+            // Obtener los clientes desde el modelo
+            $clientes = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
         }
     
         // Nombre del archivo Word a generar
-        $name = $_GET["usuariosWord"] . '.doc';
+        $name = $_GET["clientesWord"] . '.doc';
     
         // Configuración de los encabezados HTTP para descarga de archivo Word
         header('Expires: 0');
@@ -215,17 +217,19 @@ class ControladorClientes {
         echo utf8_decode("<table border='1'>
             <tr>
                 <td style='text-align:center; font-weight:bold;'>Nombre</td>
-                <td style='text-align:center; font-weight:bold;'>Usuario</td>
-                <td style='text-align:center; font-weight:bold;'>Perfil</td>
+                <td style='text-align:center; font-weight:bold;'>Correo Electrónico</td>
+                <td style='text-align:center; font-weight:bold;'>Teléfono</td>
+                <td style='text-align:center; font-weight:bold;'>Dirección</td>
                 <td style='text-align:center; font-weight:bold;'>Fecha</td>
             </tr>");
     
-        // Recorrer los usuarios y generar las filas de la tabla
-        foreach ($usuarios as $key => $datos) {
+        // Recorrer los clientes y generar las filas de la tabla
+        foreach ($clientes as $key => $datos) {
             echo utf8_decode("<tr>
                 <td style='text-align:center;'>" . $datos["nombre"] . "</td>
-                <td style='text-align:center;'>" . $datos["usuario"] . "</td>
-                <td style='text-align:center;'>" . $datos["perfil"] . "</td>
+                <td style='text-align:center;'>" . $datos["correo"] . "</td>
+                <td style='text-align:center;'>" . $datos["telefono"] . "</td>
+                <td style='text-align:center;'>" . $datos["direccion"] . "</td>
                 <td style='text-align:center;'>" . $datos["fecha"] . "</td>
             </tr>");
         }
@@ -238,18 +242,18 @@ class ControladorClientes {
 
 
 
-    public function ctrDescargarReportesCSVUsuarios() {
-        if (isset($_GET["usuariosCSV"])) {
-            $tabla = "usuarios";
+    public function ctrDescargarReportesCSVClientes() {
+        if (isset($_GET["clientesCSV"])) {
+            $tabla = "clientes";
             $item = null;
             $valor = null;
     
             // Obtener los usuarios desde el modelo
-            $usuarios = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
+            $clientes = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
         }
     
         // Nombre del archivo CSV
-        $name = $_GET["usuariosCSV"] . '.csv';
+        $name = $_GET["clientesCSV"] . '.csv';
     
         // Configuración de los encabezados HTTP
         header('Expires: 0');
@@ -259,10 +263,10 @@ class ControladorClientes {
     
         // Crear contenido del CSV
         $datos = "";
-        $datos .= "NOMBRE,USUARIO,PERFIL,FECHA\r\n";
+        $datos .= "NOMBRE,CORREO ELECTRÓNICO,TELÉFONO,DIRECCIÓN,FECHA\r\n";
     
-        foreach ($usuarios as $key => $values) {
-            $datos .= "$values[nombre],$values[usuario],$values[perfil],$values[fecha]\r\n";
+        foreach ($clientes as $key => $values) {
+            $datos .= "$values[nombre],$values[correo],$values[telefono],$values[direccion],$values[fecha]\r\n";
         }
     
         echo utf8_decode($datos);
