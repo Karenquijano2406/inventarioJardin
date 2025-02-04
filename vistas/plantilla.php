@@ -178,6 +178,7 @@ include "modulos/footer.php";
 <script src="vistas/js/empresa.js"></script>
 <script src="vistas/js/categorias.js"></script>
 <script src="vistas/js/clientes.js"></script>
+<script src="vistas/js/proveedores.js"></script>
 
 
 

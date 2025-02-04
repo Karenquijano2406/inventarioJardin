@@ -59,31 +59,32 @@ class ControladorProveedores {
         
     }
 
-    static public function ctrEditarClientes() {
-        if (isset($_POST["editarNombre"])) {
-            $tabla = "clientes";
+    static public function ctrEditarProveedores() {
+        if (isset($_POST["editarEmpresa"])) {
+            $tabla = "proveedores";
 
-            
+           
 
             $datos = array("id" => $_POST['id'],
-                "nombre" => $_POST['editarNombre'],
+                "empresa" => $_POST['editarEmpresa'],
+                "tipoEmpresa" => $_POST['editarTipoEmpresa'],
                 "correo" => $_POST['editarCorreo'],
                 "telefono" => $_POST['editarTelefono'],
                 "direccion" => $_POST['editarDireccion']
             );
 
-            $respuesta = ModeloClientes::mdlEditarClientes($tabla, $datos);
+            $respuesta = ModeloProveedores::mdlEditarProveedores($tabla, $datos);
 
             if ($respuesta == "ok") {
                 echo '<script>
                     swal({
                         type: "success",
-                        title: "El cliente ha sido editado correctamente",
+                        title: "El proveedor ha sido editado correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "clientes";
+                            window.location = "proveedores";
                         }
                     });
                 </script>';
@@ -93,12 +94,12 @@ class ControladorProveedores {
                 echo '<script>
                     swal({
                         type: "error",
-                        title: "El cliente no ha sido editado correctamente",
+                        title: "El proveedor no ha sido editado correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "clientes";
+                            window.location = "proveedores";
                         }
                     });
                 </script>';
@@ -112,26 +113,26 @@ class ControladorProveedores {
 
 
 
-    static public function ctrBorrarClientes(){
+    static public function ctrBorrarProveedores(){
 
-        if (isset($_GET['idCliente'])) {
+        if (isset($_GET['idProveedores'])) {
             
-            $tabla = "clientes";
-            $datos = $_GET['idCliente'];
+            $tabla = "proveedores";
+            $datos = $_GET['idProveedores'];
 
-            $respuesta = ModeloClientes::mdlBorrarClientes($tabla,$datos);
+            $respuesta = ModeloProveedores::mdlBorrarProveedores($tabla,$datos);
 
             if ($respuesta == "ok") {
                 
                 echo '<script>
                     swal({
                         type: "success",
-                        title: "El cliente ha sido eliminado correctamente",
+                        title: "El proveedor ha sido eliminado correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "clientes";
+                            window.location = "proveedores";
                         }
                     });
                 </script>';

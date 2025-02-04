@@ -80,7 +80,7 @@
 
                     <td>
 
-                    <button class="btn btn-primary btnEditarProveedores" data-toggle="modal" data-target="#modalEditarClientes" idProveedores="'.$datos["id"].'">Editar</button>
+                    <button class="btn btn-primary btnEditarProveedores" data-toggle="modal" data-target="#modalEditarProveedores" idProveedores="'.$datos["id"].'">Editar</button>
                     <button class="btn btn-danger btnEliminarProveedores" idProveedores="'.$datos["id"].'">Eliminar</button>
                     
                     </td>
@@ -236,25 +236,25 @@
 
 
 
-   <!-- ventana modal Editar clientes -->
-   <div id="modalEditarClientes" class="modal fade" role="dialog">
+   <!-- ventana modal Editar proveedor -->
+   <div id="modalEditarProveedores" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <form role="form" method="post" enctype="multipart/form-data">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Editar Clientes</h4>
+              <h4 class="modal-title">Editar Proveedor</h4>
 
             </div>
             <div class="modal-body">
               <div class="box-body">
 
-              <!-- Ingresar nombre -->
+              <!-- Ingresar nombre empresa -->
                 <div class="form-group">
                 <label>Nombre:</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control input-lg" name="editarNombre" id="editarNombre">
+                    <input type="text" class="form-control input-lg" name="editarEmpresa" id="editarEmpresa">
 
                   <!-- para que me edite uno por uno los usuarios, ya que antes al editar me editaba los de toda la tabla -->
                     <input type="hidden" name="id" id="id">
@@ -262,6 +262,27 @@
                   </div>
 
                 </div>
+
+
+                <!-- ingresar tipo de empresa -->
+                <div class="form-group">
+                <label>Tipo de Empresa:</label>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                    <select class="form-control input-lg" name="editarTipoEmpresa">
+                      <option id="editarTipoEmpresa"></option>
+                      <option value="Distribuidor Abarrotes y productos básicos">Distribuidor Abarrotes y Productos Básicos</option>
+                        <option value="Distribuidor de Frutas y verduras">Distribuidor de Frutas y Verduras </option>
+                        <option value="Distribuidor de Lácteos y panadería">Distribuidor de Lácteos y Panadería </option>
+                        <option value="Distribuidor de Carnes y mariscos">Distribuidor de Carnes y Mariscos </option>
+                        <option value="Distribuidor de Desechables y empaques">Distribuidor de Desechables y Empaques </option>
+
+                    </select>
+
+                  </div>
+
+                </div>
+
 <!-- 
                 ingresar correo -->
                 <div class="form-group">
@@ -323,8 +344,8 @@
 
         <?php 
 
-         $editarCliente = new ControladorClientes();
-         $editarCliente->ctrEditarClientes();
+         $editarProveedores = new ControladorProveedores();
+         $editarProveedores->ctrEditarProveedores();
         
         ?>
 
@@ -338,8 +359,8 @@
 
    <?php 
 
-        $EliminarCliente = new ControladorClientes();
-        $EliminarCliente->ctrBorrarClientes();
+        $EliminarProveedores = new ControladorProveedores();
+        $EliminarProveedores->ctrBorrarProveedores();
         
         ?>
 
