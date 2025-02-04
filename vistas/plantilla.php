@@ -141,6 +141,7 @@ if (isset($_GET["ruta"])) {
         $_GET['ruta'] == "empresa" ||
         $_GET['ruta'] == "categorias" ||
         $_GET['ruta'] == "clientes" ||
+        $_GET['ruta'] == "proveedores" ||
         $_GET['ruta'] == "salir" ) {
         
         include "modulos/".$_GET["ruta"].".php";
