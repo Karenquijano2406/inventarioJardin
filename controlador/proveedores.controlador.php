@@ -145,19 +145,19 @@ class ControladorProveedores {
 
 
 
-    public function ctrDescargarReportesExcelClientes() {
-        if (isset($_GET["clientesExcel"])) {
+    public function ctrDescargarReportesExcelProveedores() {
+        if (isset($_GET["proveedoresExcel"])) {
             
-            $tabla = "clientes";
+            $tabla = "proveedores";
             $item = null;
             $valor = null;
     
             // Obtener los clientes desde el modelo
-            $clientes = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
+            $proveedores = ModeloProveedores::mdlMostrarProveedores($tabla, $item, $valor);
         }
     
         // Nombre del archivo Excel a generar
-        $name = $_GET["clientesExcel"] . '.xls';
+        $name = $_GET["proveedoresExcel"] . '.xls';
     
         // Configuración de los encabezados HTTP para descarga de archivo Excel
         header('Expires: 0');
@@ -168,21 +168,21 @@ class ControladorProveedores {
         // Iniciar la tabla y definir los encabezados de las columnas
         echo utf8_decode("<table border='1'>
             <tr>
-                <td style='text-align:center; font-weight:bold;'>Nombre</td>
+                <td style='text-align:center; font-weight:bold;'>Empresa</td>
+                <td style='text-align:center; font-weight:bold;'>Tipo de Empresa</td>
                 <td style='text-align:center; font-weight:bold;'>Correo Electrónico</td>
                 <td style='text-align:center; font-weight:bold;'>Teléfono</td>
                 <td style='text-align:center; font-weight:bold;'>Direccion</td>
-                <td style='text-align:center; font-weight:bold;'>Fecha</td>
             </tr>");
     
         // Recorrer los usuarios y generar las filas de la tabla
-        foreach ($clientes as $key => $datos) {
+        foreach ($proveedores as $key => $datos) {
             echo utf8_decode("<tr>
-                <td style='text-align:center;'>" . $datos["nombre"] . "</td>
+                <td style='text-align:center;'>" . $datos["empresa"] . "</td>
+                <td style='text-align:center;'>" . $datos["tipoEmpresa"] . "</td>
                 <td style='text-align:center;'>" . $datos["correo"] . "</td>
                 <td style='text-align:center;'>" . $datos["telefono"] . "</td>
                 <td style='text-align:center;'>" . $datos["direccion"] . "</td>
-                <td style='text-align:center;'>" . $datos["fecha"] . "</td>
             </tr>");
         }
     
@@ -195,19 +195,19 @@ class ControladorProveedores {
 
 
 
-    public function ctrDescargarReportesWordClientes() {
-        if (isset($_GET["clientesWord"])) {
+    public function ctrDescargarReportesWordProveedores() {
+        if (isset($_GET["proveedoresWord"])) {
             
-            $tabla = "clientes";
+            $tabla = "proveedores";
             $item = null;
             $valor = null;
     
             // Obtener los clientes desde el modelo
-            $clientes = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
+            $proveedores = ModeloProveedores::mdlMostrarProveedores($tabla, $item, $valor);
         }
     
         // Nombre del archivo Word a generar
-        $name = $_GET["clientesWord"] . '.doc';
+        $name = $_GET["proveedoresWord"] . '.doc';
     
         // Configuración de los encabezados HTTP para descarga de archivo Word
         header('Expires: 0');
@@ -218,21 +218,21 @@ class ControladorProveedores {
         // Iniciar la tabla y definir los encabezados de las columnas
         echo utf8_decode("<table border='1'>
             <tr>
-                <td style='text-align:center; font-weight:bold;'>Nombre</td>
+                <td style='text-align:center; font-weight:bold;'>Empresa</td>
+                <td style='text-align:center; font-weight:bold;'>Tipo de Empresa</td>
                 <td style='text-align:center; font-weight:bold;'>Correo Electrónico</td>
                 <td style='text-align:center; font-weight:bold;'>Teléfono</td>
                 <td style='text-align:center; font-weight:bold;'>Dirección</td>
-                <td style='text-align:center; font-weight:bold;'>Fecha</td>
             </tr>");
     
         // Recorrer los clientes y generar las filas de la tabla
-        foreach ($clientes as $key => $datos) {
+        foreach ($proveedores as $key => $datos) {
             echo utf8_decode("<tr>
-                <td style='text-align:center;'>" . $datos["nombre"] . "</td>
+                <td style='text-align:center;'>" . $datos["empresa"] . "</td>
+                <td style='text-align:center;'>" . $datos["tipoEmpresa"] . "</td>
                 <td style='text-align:center;'>" . $datos["correo"] . "</td>
                 <td style='text-align:center;'>" . $datos["telefono"] . "</td>
                 <td style='text-align:center;'>" . $datos["direccion"] . "</td>
-                <td style='text-align:center;'>" . $datos["fecha"] . "</td>
             </tr>");
         }
     
@@ -244,18 +244,18 @@ class ControladorProveedores {
 
 
 
-    public function ctrDescargarReportesCSVClientes() {
-        if (isset($_GET["clientesCSV"])) {
-            $tabla = "clientes";
+    public function ctrDescargarReportesCSVProveedores() {
+        if (isset($_GET["proveedoresCSV"])) {
+            $tabla = "proveedores";
             $item = null;
             $valor = null;
     
-            // Obtener los usuarios desde el modelo
-            $clientes = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
+            // Obtener los proveedores desde el modelo
+            $proveedores = ModeloProveedores::mdlMostrarProveedores($tabla, $item, $valor);
         }
     
         // Nombre del archivo CSV
-        $name = $_GET["clientesCSV"] . '.csv';
+        $name = $_GET["proveedoresCSV"] . '.csv';
     
         // Configuración de los encabezados HTTP
         header('Expires: 0');
@@ -265,10 +265,10 @@ class ControladorProveedores {
     
         // Crear contenido del CSV
         $datos = "";
-        $datos .= "NOMBRE,CORREO ELECTRÓNICO,TELÉFONO,DIRECCIÓN,FECHA\r\n";
+        $datos .= "EMPRESA,TIPO DE EMPRESA,CORREO ELECTRÓNICO,TELÉFONO,DIRECCIÓN\r\n";
     
-        foreach ($clientes as $key => $values) {
-            $datos .= "$values[nombre],$values[correo],$values[telefono],$values[direccion],$values[fecha]\r\n";
+        foreach ($proveedores as $key => $values) {
+            $datos .= "$values[empresa],$values[tipoEmpresa],$values[correo],$values[telefono],$values[direccion]\r\n";
         }
     
         echo utf8_decode($datos);
