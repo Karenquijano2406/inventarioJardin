@@ -1,54 +1,75 @@
+<?php  
+$item = null;
+$valor = null;
+
+
+$usuarios = ControladorUsuarios::ctrMostrarUsuarios($item,$valor);
+$totalusuarios = count($usuarios);
+
+$categorias = ControladorCategorias::ctrMostrarCategorias($item,$valor);
+$totalcategorias = count($categorias);
+
+$clientes = ControladorClientes::ctrMostrarClientes($item,$valor);
+$totalclientes = count($clientes);
+
+
+$proveedores = ControladorProveedores::ctrMostrarProveedores($item,$valor);
+$totalproveedores = count($proveedores);
+
+?>
+
+
 <div class="row" style="margin: 10px;">
     <!-- Cajas Superiores -->
     <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>150</h3>
-                <p>New Orders</p>
+                <h3><?php echo $totalusuarios;?></h3>
+                <p>Usuarios</p>
             </div>
             <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="fa fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="usuarios" class="small-box-footer">Usuarios<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     
     <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-                <p>Bounce Rate</p>
+                <h3><?php echo $totalcategorias;?></h3>
+                <p>Categorías</p>
             </div>
             <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fa fa-th-list"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="categorias" class="small-box-footer">Categorías<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     
     <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>44</h3>
-                <p>User Registrations</p>
+                <h3><?php echo $totalclientes;?></h3>
+                <p>Clientes</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="clientes" class="small-box-footer">Clientes<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     
     <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>65</h3>
-                <p>Unique Visitors</p>
+                <h3><?php echo $totalproveedores;?></h3>
+                <p>Proveedores</p>
             </div>
             <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fa fa-truck"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="proveedores" class="small-box-footer">Proveedores<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
 </div>
