@@ -9,31 +9,32 @@ class ControladorProductos {
     }
 
 
-    static public function ctrCrearClientes() {
+    static public function ctrCrearProductos() {
         if (isset($_POST["nuevoNombre"])) {
-            $tabla = "clientes";
+            $tabla = "productos";
 
            
 
-            $datos = array(
+            $datos = array("categoria" => $_POST['categoria'],
                 "nombre" => $_POST['nuevoNombre'],
-                "correo" => $_POST['nuevoCorreo'],
-                "telefono" => $_POST['nuevoTelefono'],
-                "direccion" => $_POST['nuevoDireccion']
+                "descripcion" => $_POST['nuevoDescripcion'],
+                "precioCompra" => $_POST['nuevoPrecioCompra'],
+                "precioVenta" => $_POST['nuevoPrecioVenta'],
+                "stock" => $_POST['nuevoStock']
             );
 
-            $respuesta = ModeloClientes::mdlIngresarClientes($tabla, $datos);
+            $respuesta = ModeloProductos::mdlIngresarProductos($tabla, $datos);
 
             if ($respuesta == "ok") {
                 echo '<script>
                     swal({
                         type: "success",
-                        title: "El cliente ha sido guardado correctamente",
+                        title: "El producto ha sido guardado correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "clientes";
+                            window.location = "productos";
                         }
                     });
                 </script>';
@@ -41,12 +42,12 @@ class ControladorProductos {
                 echo '<script>
                     swal({
                         type: "error",
-                        title: "El cliente no ha sido guardado correctamente",
+                        title: "El producto no ha sido guardado correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "clientes";
+                            window.location = "productos";
                         }
                     });
                 </script>';
@@ -58,31 +59,33 @@ class ControladorProductos {
         
     }
 
-    static public function ctrEditarClientes() {
+    static public function ctrEditarProductos() {
         if (isset($_POST["editarNombre"])) {
-            $tabla = "clientes";
+            $tabla = "productos";
 
             
 
             $datos = array("id" => $_POST['id'],
+                "categoria" => $_POST['editarCategoria'],
                 "nombre" => $_POST['editarNombre'],
-                "correo" => $_POST['editarCorreo'],
-                "telefono" => $_POST['editarTelefono'],
-                "direccion" => $_POST['editarDireccion']
+                "descripcion" => $_POST['editarDescripcion'],
+                "precioCompra" => $_POST['editarPrecioCompra'],
+                "precioVenta" => $_POST['editarPrecioVenta'],
+                "stock" => $_POST['editarStock']
             );
 
-            $respuesta = ModeloClientes::mdlEditarClientes($tabla, $datos);
+            $respuesta = ModeloProductos::mdlEditarProductos($tabla, $datos);
 
             if ($respuesta == "ok") {
                 echo '<script>
                     swal({
                         type: "success",
-                        title: "El cliente ha sido editado correctamente",
+                        title: "El producto ha sido editado correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "clientes";
+                            window.location = "productos";
                         }
                     });
                 </script>';
@@ -92,12 +95,12 @@ class ControladorProductos {
                 echo '<script>
                     swal({
                         type: "error",
-                        title: "El cliente no ha sido editado correctamente",
+                        title: "El producto no ha sido editado correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "clientes";
+                            window.location = "productos";
                         }
                     });
                 </script>';

@@ -3,14 +3,16 @@ require_once "conexion.php";
 
 class ModeloProductos {
 
-    static public function mdlIngresarClientes($tabla, $datos) {
-        $stmt = Conexion::Conectar()->prepare("INSERT INTO $tabla (nombre, correo, telefono, direccion) 
-            VALUES (:nombre, :correo, :telefono, :direccion)");
+    static public function mdlIngresarProductos($tabla, $datos) {
+        $stmt = Conexion::Conectar()->prepare("INSERT INTO $tabla (categoria,nombre, descripcion, precioCompra, precioVenta, stock) 
+            VALUES (:categoria, :nombre, :descripcion, :precioCompra, :precioVenta, :stock)");
 
+        $stmt->bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-        $stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
-        $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR); // Contraseña encriptada
-        $stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+        $stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+        $stmt->bindParam(":precioCompra", $datos["precioCompra"], PDO::PARAM_STR);
+        $stmt->bindParam(":precioVenta", $datos["precioVenta"], PDO::PARAM_STR); 
+        $stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
 
         if ($stmt->execute()) {
             return "ok";
@@ -23,14 +25,16 @@ class ModeloProductos {
     }
 
 
-    static public function mdlEditarClientes($tabla, $datos) {
-        $stmt = Conexion::Conectar()->prepare("UPDATE $tabla SET nombre = :nombre, correo = :correo, telefono = :telefono, direccion = :direccion WHERE id = :id");
+    static public function mdlEditarProductos($tabla, $datos) {
+        $stmt = Conexion::Conectar()->prepare("UPDATE $tabla SET categoria = :categoria, nombre = :nombre, descripcion = :descripcion, precioCompra = :precioCompra, precioVenta = :precioVenta, stock = :stock WHERE id = :id");
 
         $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+        $stmt->bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-        $stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
-        $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR); 
-        $stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+        $stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+        $stmt->bindParam(":precioCompra", $datos["precioCompra"], PDO::PARAM_STR);
+        $stmt->bindParam(":precioVenta", $datos["precioVenta"], PDO::PARAM_STR); 
+        $stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
 
         if ($stmt->execute()) {
             return "ok";

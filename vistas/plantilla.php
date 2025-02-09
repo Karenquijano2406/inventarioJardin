@@ -142,6 +142,7 @@ if (isset($_GET["ruta"])) {
         $_GET['ruta'] == "categorias" ||
         $_GET['ruta'] == "clientes" ||
         $_GET['ruta'] == "proveedores" ||
+        $_GET['ruta'] == "productos" ||
         $_GET['ruta'] == "salir" ) {
         
         include "modulos/".$_GET["ruta"].".php";
@@ -179,6 +180,7 @@ include "modulos/footer.php";
 <script src="vistas/js/categorias.js"></script>
 <script src="vistas/js/clientes.js"></script>
 <script src="vistas/js/proveedores.js"></script>
+<script src="vistas/js/productos.js"></script>
 
 
 
