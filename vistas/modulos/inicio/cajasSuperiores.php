@@ -2,7 +2,7 @@
 $item = null;
 $valor = null;
 
-
+// para que me traiga los valores a las cajas de inicio
 $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item,$valor);
 $totalusuarios = count($usuarios);
 
@@ -90,61 +90,44 @@ $totalproveedores = count($proveedores);
             <table class="table no-margin" style="margin: 10px; padding: 10px;">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>Categoría</th>
                         <th>Nombre</th>
-                        <th>Precio Venta</th>
+                        <th>Precio Compra</th>
                         <th>Stock</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><a href="#">OR9842</a></td>
-                        <td>Call of Duty IV</td>
-                        <td><span class="label label-success">Shipped</span></td>
-                        <td>90%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">OR1848</a></td>
-                        <td>Samsung Smart TV</td>
-                        <td><span class="label label-warning">Pending</span></td>
-                        <td>85%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">OR7429</a></td>
-                        <td>iPhone 6 Plus</td>
-                        <td><span class="label label-danger">Delivered</span></td>
-                        <td>78%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">OR7429</a></td>
-                        <td>Samsung Smart TV</td>
-                        <td><span class="label label-info">Processing</span></td>
-                        <td>82%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">OR1848</a></td>
-                        <td>Samsung Smart TV</td>
-                        <td><span class="label label-warning">Pending</span></td>
-                        <td>88%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">OR7429</a></td>
-                        <td>iPhone 6 Plus</td>
-                        <td><span class="label label-danger">Delivered</span></td>
-                        <td>74%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">OR9842</a></td>
-                        <td>Call of Duty IV</td>
-                        <td><span class="label label-success">Shipped</span></td>
-                        <td>92%</td>
-                    </tr>
+                    
+                        <?php
+
+                        $productos = ControladorProductos::ctrMostrarProductos(null,null);
+
+                        for ($i=0; $i < @$productos[$i]; $i++) { 
+
+                            echo " <tr>
+
+                            <td>".$productos[$i]["categoria"]."</td>
+                            <td>".$productos[$i]["nombre"]."</td>
+                            <td>$ ".$productos[$i]["precioCompra"]."</td>
+                            <td>".$productos[$i]["stock"]."</td>
+
+                            </tr>
+                            ";
+                        }
+                        
+                        ?>
+                    
+
+
+
+
+                    
                 </tbody>
             </table>
         </div>
     </div>
     <div class="box-footer clearfix">
-        <a href="#" class="btn btn-sm btn-info btn-flat pull-left">Productos</a>
-        <a href="#" class="btn btn-sm btn-default btn-flat pull-right">Ver todos los productos</a>
+        <a href="productos" class="btn btn-sm btn-info btn-flat pull-left">Productos</a>
+        <a href="productos" class="btn btn-sm btn-default btn-flat pull-right">Ver todos los productos</a>
     </div>
 </div>
