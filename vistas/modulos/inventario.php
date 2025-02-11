@@ -52,6 +52,7 @@
 
                 foreach ($productos as $key => $datos) {
 
+                    // para darle color a los botones segun la cantidad de existencia
                     if ($datos["stock"] <= 3 ){
                         $stock = "<div class='btn btn-danger'>".$datos["stock"]."</div>";
 
