@@ -114,26 +114,26 @@ class ControladorProductos {
 
 
 
-    static public function ctrBorrarClientes(){
+    static public function ctrBorrarProductos(){
 
-        if (isset($_GET['idCliente'])) {
+        if (isset($_GET['idProducto'])) {
             
-            $tabla = "clientes";
-            $datos = $_GET['idCliente'];
+            $tabla = "productos";
+            $datos = $_GET['idProducto'];
 
-            $respuesta = ModeloClientes::mdlBorrarClientes($tabla,$datos);
+            $respuesta = ModeloProductos::mdlBorrarProductos($tabla,$datos);
 
             if ($respuesta == "ok") {
                 
                 echo '<script>
                     swal({
                         type: "success",
-                        title: "El cliente ha sido eliminado correctamente",
+                        title: "El producto ha sido eliminado correctamente",
                         showConfirmButton: true,
                         confirmButtonText: "Cerrar"
                     }).then(function(result) {
                         if (result.value) {
-                            window.location = "clientes";
+                            window.location = "productos";
                         }
                     });
                 </script>';

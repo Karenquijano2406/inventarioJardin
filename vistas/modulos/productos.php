@@ -395,8 +395,8 @@
 
    <?php 
 
-        $EliminarCliente = new ControladorClientes();
-        $EliminarCliente->ctrBorrarClientes();
+        $EliminarProducto = new ControladorProductos();
+        $EliminarProducto->ctrBorrarProductos();
         
         ?>
 

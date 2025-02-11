@@ -37,25 +37,25 @@ $(".tablas").on("click", ".btnEditarProductos", function() {
 /*=============================================
 ELIMINAR productos
 =============================================*/
-$(".tablas").on("click", ".btnEliminarClientes", function(){
+$(".tablas").on("click", ".btnEliminarProductos", function(){
 
     var idProducto = $(this).attr("idProducto");
     
   
     swal({
-      title: '¿Está seguro de eliminar el cliente?',
+      title: '¿Está seguro de eliminar el producto?',
       text: "¡Si no lo está puede cancelar la accíón!",
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
-        confirmButtonText: '¡Si, borrar cliente!'
+        confirmButtonText: '¡Si, borrar producto!'
     }).then(function(result){
   
       if(result.value){
   
-        window.location = "index.php?ruta=clientes&idProducto="+idProducto;
+        window.location = "index.php?ruta=productos&idProducto="+idProducto;
   
       }
   
@@ -64,32 +64,32 @@ $(".tablas").on("click", ".btnEliminarClientes", function(){
   })
 
 
-  $(".display").on("click", ".btnImprimirExcelClientes", function(){
+  $(".display").on("click", ".btnImprimirExcelProductos", function(){
 
-    window.open("vistas/modulos/clientes-excel.php?clientesExcel=clientesExcel", "blank");
+    window.open("vistas/modulos/productos-excel.php?productosExcel=productosExcel", "blank");
   });
 
 
-  $(".display").on("click", ".btnImprimirWordClientes", function(){
+  $(".display").on("click", ".btnImprimirWordProductos", function(){
 
-    window.open("vistas/modulos/clientes-word.php?clientesWord=clientesWord", "blank");
+    window.open("vistas/modulos/productos-word.php?productosWord=productosWord", "blank");
   });
 
 
-  $(".display").on("click", ".btnImprimirCSVClientes", function(){
+  $(".display").on("click", ".btnImprimirCSVProductos", function(){
 
-    window.open("vistas/modulos/clientes-csv.php?clientesCSV=clientesCSV", "blank");
+    window.open("vistas/modulos/productos-csv.php?productosCSV=productosCSV", "blank");
   });
 
 
-   $(".display").on("click", ".btnImprimirPDFClientes", function(){
+   $(".display").on("click", ".btnImprimirPDFProductos", function(){
 
-  window.open("extensiones/tcpdf/pdf/clientes-pdf.php", "blank");
+  window.open("extensiones/tcpdf/pdf/productos-pdf.php", "blank");
    });
 
 
-   $(".display").on("click", ".btnImprimirPDFHorizontalClientes", function(){
+   $(".display").on("click", ".btnImprimirPDFHorizontalProductos", function(){
 
-    window.open("extensiones/tcpdf/pdf/clientes-horizontal-pdf.php", "blank");
+    window.open("extensiones/tcpdf/pdf/productos-horizontal-pdf.php", "blank");
      });
 
