@@ -67,7 +67,7 @@
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Productos de Entrada</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Productos de Salida</a></li>
 
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Inventario</a></li>
+            <li><a href="inventario"><i class="fa fa-circle-o"></i> Inventario</a></li>
           </ul>
         </li>
 
