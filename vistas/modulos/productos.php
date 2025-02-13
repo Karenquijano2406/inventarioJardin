@@ -559,33 +559,99 @@
               <div class="form-group">
                   <div class="input-group">
                     
-                    <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="idEntrada" id="idEntrada">
 
                   </div>
 
                 </div>
 
 
-              <!-- Ingresar nombre empresa -->
-                <div class="form-group">
-                
-                    <input type="text" class="form-control input-lg" name="nombreEmpresa" id="nombreEmpresa">
+               <!-- nombre de la empresa-->
+               <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-dashboard"></i></span>
+                   
+                    <select class="form-control input-lg" name="nombreEmpresa">
+                      <?php
+                      $proveedores = ControladorProveedores::ctrMostrarProveedores(null,null);
+                      
+                      foreach ($proveedores as $key => $value) {
+                        
+                        
+                        echo '
+                            
+                            <option value='.$value["empresa"].'>'.$value["empresa"].'</option>
+                        
+                        ';
+                      }
+                       ?>
+                        
+
+                    </select>
+
+                  </div>
 
                 </div>
 
-                <!-- Ingresar tipo empresa -->
-                <div class="form-group">
-                
-                    <input type="text" class="form-control input-lg" name="tipoEmpresa" id="tipoEmpresa">
+
+
+                <!--  ingresar TIPO empresa -->
+               <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                    
+                    <select class="form-control input-lg" name="tipoEmpresa">
+                      <?php
+                      $proveedores = ControladorProveedores::ctrMostrarProveedores(null,null);
+                      
+                      foreach ($proveedores as $key => $valores) {
+                        
+                        
+                        echo '
+                            
+                            <option value='.$valores["tipoEmpresa"].'>'.$valores["tipoEmpresa"].'</option>
+                        
+                        ';
+                      }
+                       ?>
+                        
+
+                    </select>
+
+                  </div>
 
                 </div>
 
-                <!-- Ingresar nombre de producto -->
-                <div class="form-group">
-                
-                    <input type="text" class="form-control input-lg" name="nombreProducto" id="nombreProducto">
+
+
+                <!--  seleccionar productos -->
+               <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
+                    
+                    <select class="form-control input-lg" name="nombreProducto">
+                      <?php
+                      $productos = ControladorProductos::ctrMostrarProductos(null,null);
+                      
+                      foreach ($productos as $key => $datos) {
+                        
+                        
+                        echo '
+                            
+                            <option value='.$datos["nombre"].'>'.$datos["nombre"].'</option>
+                        
+                        ';
+                      }
+                       ?>
+                        
+
+                    </select>
+
+                  </div>
 
                 </div>
+
+                
 
                 <!-- ingresar stock -->
                 <div class="form-group">
@@ -622,8 +688,8 @@
 
         <?php 
 
-        //  $editarProductos = new ControladorProductos();
-        //  $editarProductos->ctrEditarProductos();
+          $entradaProductos = new ControladorProductos();
+         $entradaProductos->ctrCrearEntradasProductos();
         
         ?>
 

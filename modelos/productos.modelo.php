@@ -25,6 +25,27 @@ class ModeloProductos {
     }
 
 
+
+    static public function mdlIngresarProductosEntrada($tabla, $datos) {
+        $stmt = Conexion::Conectar()->prepare("INSERT INTO $tabla (nombreEmpresa, tipoEmpresa, nombreProducto, entradap) 
+            VALUES (:nombreEmpresa, :tipoEmpresa, :nombreProducto, :entradap)");
+
+        $stmt->bindParam(":nombreEmpresa", $datos["nombreEmpresa"], PDO::PARAM_STR);
+        $stmt->bindParam(":tipoEmpresa", $datos["tipoEmpresa"], PDO::PARAM_STR);
+        $stmt->bindParam(":nombreProducto", $datos["nombreProducto"], PDO::PARAM_STR);
+        $stmt->bindParam(":entradap", $datos["entradap"], PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt = null;
+    }
+
+
     static public function mdlEditarProductos($tabla, $datos) {
         $stmt = Conexion::Conectar()->prepare("UPDATE $tabla SET categoria = :categoria, nombre = :nombre, descripcion = :descripcion, precioCompra = :precioCompra, precioVenta = :precioVenta, stock = :stock WHERE id = :id");
 
@@ -84,6 +105,26 @@ class ModeloProductos {
         $stmt = null;
 
 
+    }
+
+
+
+    static public function mdlActualizarProductosEntrada($tablaDos,$itemDos,$valor,$resultado) {
+        $stmt = Conexion::Conectar()->prepare("UPDATE $tablaDos SET $itemDos = :$itemDos WHERE id = :id");
+
+        $stmt->bindParam(":".$itemDos, $resultado, PDO::PARAM_STR);
+        
+        $stmt->bindParam(":id",$valor, PDO::PARAM_INT);
+       
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt = null;
     }
 
 
