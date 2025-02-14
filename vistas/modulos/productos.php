@@ -721,39 +721,71 @@
               <div class="form-group">
                   <div class="input-group">
                     
-                    <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="idSalida" id="idSalida">
 
                   </div>
 
                 </div>
 
 
-              <!-- Ingresar cetgoria -->
+                  <!-- id categoria -->
                 <div class="form-group">
-                
-                    <input type="text" class="form-control input-lg" name="categoriap" id="categoriap">
+                  <div class="input-group">
+                    
+                    <input type="hidden" name="categoriap" id="categoriap">
+
+                  </div>
 
                 </div>
 
-                <!-- Ingresar nombre del prodcuto -->
+
+                <!-- id producto -->
                 <div class="form-group">
-                
-                    <input type="text" class="form-control input-lg" name="nombreProducto" id="nombreProducto">
+                  <div class="input-group">
+                    
+                    <input type="hidden" name="nombreProductoSalida" id="nombreProductoSalida">
+
+                  </div>
 
                 </div>
 
-                <!-- Ingresar nombre del Cliente -->
-                <div class="form-group">
-                
-                    <input type="text" class="form-control input-lg" name="nombreCliente" id="nombreCliente">
+
+
+                <!--  seleccionar productos -->
+               <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
+                    
+                    <select class="form-control input-lg" name="nombreCliente">
+                      <?php
+                      $clientes = ControladorClientes::ctrMostrarClientes(null,null);
+                      
+                      foreach ($clientes as $key => $datos) {
+                        
+                        
+                        echo '
+                            
+                            <option value='.$datos["nombre"].'>'.$datos["nombre"].'</option>
+                        
+                        ';
+                      }
+                       ?>
+                        
+
+                    </select>
+
+                  </div>
 
                 </div>
 
-                <!-- ingresar nombre del Cliente -->
+                
+
+
+                <!-- ingresar stock -->
                 <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-cubes"></i></span>
-                    <input type="number" class="form-control input-lg" min="1" name="salidaStock" id="salidaStock" placeholder="Salidas de Stock">
+                    <input type="number" class="form-control input-lg" min="1" name="salidaStock" id="salidaStock" placeholder="Número de Stock">
 
                   </div>
 
@@ -784,8 +816,8 @@
 
         <?php 
 
-        //  $editarProductos = new ControladorProductos();
-        //  $editarProductos->ctrEditarProductos();
+          $salidasProductos = new ControladorProductos();
+         $salidasProductos->ctrCrearSalidasProductos();
         
         ?>
 
@@ -795,29 +827,3 @@
     </div>
 
    </div>
-
-
-
-
-
-
-
-
-
-
-
-   <?php 
-
-        $EliminarProducto = new ControladorProductos();
-        $EliminarProducto->ctrBorrarProductos();
-        
-        ?>
-
-
-
-
-
- 
-
-
-

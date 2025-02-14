@@ -215,6 +215,74 @@ class ControladorProductos {
 
 
 
+    static public function ctrCrearSalidasProductos() {
+        if (isset($_POST["nombreProductoSalida"])) {
+            $tabla = "salidasp";
+
+           
+
+            $datos = array( "categoriap" => $_POST['categoriap'],
+                "nombrep" => $_POST['nombreProductoSalida'],
+                "nombreCliente" => $_POST['nombreCliente'],
+                "salidap" => $_POST['salidaStock'],
+               
+            );
+
+            $respuesta = ModeloProductos::mdlIngresarProductosSalidas($tabla, $datos);
+
+            $tablaDos = "productos";
+            $item = "id";
+            $valor = $_POST['idSalida'];
+            $traerProducto = ControladorProductos::ctrMostrarProductos($item,$valor);
+            
+            $itemDos = "stock";
+
+            foreach ($traerProducto as $key => $datos) {
+                $resultado = $traerProducto["stock"] - $_POST['salidaStock'];
+                $modificar = ModeloProductos::mdlActualizarProductosSalidas($tablaDos,$itemDos,$valor,$resultado);
+
+
+
+            }
+
+
+
+            if ($respuesta == "ok") {
+                echo '<script>
+                    swal({
+                        type: "success",
+                        title: "La salida ha sido guardada correctamente",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"
+                    }).then(function(result) {
+                        if (result.value) {
+                            window.location = "productos";
+                        }
+                    });
+                </script>';
+            } else {
+                echo '<script>
+                    swal({
+                        type: "error",
+                        title: "La salida no ha sido guardada correctamente",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"
+                    }).then(function(result) {
+                        if (result.value) {
+                            window.location = "productos";
+                        }
+                    });
+                </script>';
+            }
+        }
+
+
+
+        
+    }
+
+
+
     public function ctrDescargarReportesExcelProductos() {
         if (isset($_GET["productosExcel"])) {
             
