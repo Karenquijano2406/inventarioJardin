@@ -371,6 +371,55 @@ class ControladorProductos {
     }
 
 
+    public function ctrDescargarReportesExcelProductosEntradas() {
+        if (isset($_GET["productosEExcel"])) {
+            
+            $tabla = "entradasp";
+            $item = null;
+            $valor = null;
+    
+            // Obtener los productos desde el modelo
+            $clientes = ModeloProductos::mdlMostrarProductosEntradas($tabla, $item, $valor);
+        }
+    
+        // Nombre del archivo Excel a generar
+        $name = $_GET["productosEExcel"] . '.xls';
+    
+        // Configuración de los encabezados HTTP para descarga de archivo Excel
+        header('Expires: 0');
+        header('Cache-Control: private');
+        header('Content-type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment; filename="' . $name . '"');
+    
+        // Iniciar la tabla y definir los encabezados de las columnas
+        echo utf8_decode("<table border='1'>
+            <tr>
+                <td style='text-align:center; font-weight:bold;'>Nombre Empresa</td>
+                <td style='text-align:center; font-weight:bold;'>Tipo Empresa</td>
+                <td style='text-align:center; font-weight:bold;'>Nombre Producto</td>
+                <td style='text-align:center; font-weight:bold;'>Entrada</td>
+                <td style='text-align:center; font-weight:bold;'>Fecha</td>
+                
+            </tr>");
+    
+        // Recorrer los usuarios y generar las filas de la tabla
+        foreach ($clientes as $key => $datos) {
+            echo utf8_decode("<tr>
+                <td style='text-align:center;'>" . $datos["nombreEmpresa"] . "</td>
+                <td style='text-align:center;'>" . $datos["tipoEmpresa"] . "</td>
+                <td style='text-align:center;'>" . $datos["nombreProducto"] . "</td>
+                <td style='text-align:center;'> " . $datos["entradap"] . "</td>
+                <td style='text-align:center;'> " . $datos["fecha"] . "</td>
+                
+            </tr>");
+        }
+    
+        // Cerrar la tabla
+        echo "</table>";
+        exit(); // Para evitar que el script continúe ejecutándose después de la exportación
+    }
+
+
 
 
 

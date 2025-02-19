@@ -26,15 +26,15 @@
               
               <!-- Botones para generar reportes -->
 
-          <a href="vistas/modulos/productos-excel.php?productosExcel=productos" class="btn btn-success">Productos Excel</a>
+          <a href="vistas/modulos/productos-excel.php?productosExcel=productosSExcel" class="btn btn-success">Productos Salidas Excel</a>
 
-          <a href="vistas/modulos/productos-word.php?productosWord=productos" class="btn btn-primary">Productos Word</a>
+          <a href="vistas/modulos/productos-word.php?productosWord=productosSWord" class="btn btn-primary">Productos Salidas Word</a>
 
-          <a href="vistas/modulos/productos-csv.php?productosCSV=productos" class="btn btn-warning">Productos CSV</a>
+          <a href="vistas/modulos/productos-csv.php?productosCSV=productosSCSV" class="btn btn-warning">Productos Salidas CSV</a>
 
-          <a href="extensiones/tcpdf/pdf/productos-pdf.php" class="btn btn-danger">Productos PDF</a>
+          <a href="extensiones/tcpdf/pdf/productos-pdf.php" class="btn btn-danger">Productos Salidas PDF</a>
 
-          <a href="extensiones/tcpdf/pdf/productos-horizontal-pdf.php" class="btn btn-danger">Productos PDF Horizontal</a>
+          <a href="extensiones/tcpdf/pdf/productos-horizontal-pdf.php" class="btn btn-danger">Productos Salidas PDF Horizontal</a>
 
           </div>
 

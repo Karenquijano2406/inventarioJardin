@@ -61,3 +61,39 @@ $(".tablas").on("click", ".btnSalidaProductos", function() {
         }
     });
 });
+
+
+
+
+/*-------------------- Reportes de prodcutos de entradas----------*/
+$(".display").on("click", ".btnImprimirExcelProductosEntradas", function(){
+
+    window.open("vistas/modulos/productos-entradas-excel.php?productosEExcel=productosEExcel", "blank");
+  });
+
+
+  $(".display").on("click", ".btnImprimirWordProductosEntradas", function(){
+
+    window.open("vistas/modulos/productos-entradas-word.php?productosEWord=productosEWord", "blank");
+  });
+
+
+  $(".display").on("click", ".btnImprimirCSVProductosEntradas", function(){
+
+    window.open("vistas/modulos/productos-entradas-csv.php?productosECSV=productosECSV", "blank");
+  });
+
+
+   $(".display").on("click", ".btnImprimirPDFProductosEntradas", function(){
+
+  window.open("extensiones/tcpdf/pdf/productos-entradas-pdf.php", "blank");
+   });
+
+
+   $(".display").on("click", ".btnImprimirPDFHorizontalProductosEntradas", function(){
+
+    window.open("extensiones/tcpdf/pdf/productos-entradas-horizontal-pdf.php", "blank");
+     });
+
+/*-------------------- FIN  Reportes de prodcutos de entradas----------*/
+
