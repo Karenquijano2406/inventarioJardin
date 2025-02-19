@@ -217,7 +217,35 @@ class ControladorProductos {
 
     static public function ctrCrearSalidasProductos() {
         if (isset($_POST["nombreProductoSalida"])) {
-            $tabla = "salidasp";
+
+            
+            $item = "id";
+            $valor = $_POST['idSalida'];
+            $traerProducto = ControladorProductos::ctrMostrarProductos($item,$valor);
+
+            var_dump($traerProducto);
+
+
+            if ($_POST['salidaStock'] > $traerProducto["stock"]) {
+                
+                echo '<script>
+                    swal({
+                        type: "error",
+                        title: "La salida no puede ser mayor que el número de registro en stock en la base de datos",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar"
+                    }).then(function(result) {
+                        if (result.value) {
+                            window.location = "productos";
+                        }
+                    });
+                </script>';
+
+            }else {
+
+                $valor = $_POST['idSalida'];
+
+                $tabla = "salidasp";
 
            
 
@@ -230,11 +258,8 @@ class ControladorProductos {
 
             $respuesta = ModeloProductos::mdlIngresarProductosSalidas($tabla, $datos);
 
-            $tablaDos = "productos";
-            $item = "id";
-            $valor = $_POST['idSalida'];
-            $traerProducto = ControladorProductos::ctrMostrarProductos($item,$valor);
             
+            $tablaDos = "productos";
             $itemDos = "stock";
 
             foreach ($traerProducto as $key => $datos) {
@@ -242,10 +267,7 @@ class ControladorProductos {
                 $modificar = ModeloProductos::mdlActualizarProductosSalidas($tablaDos,$itemDos,$valor,$resultado);
 
 
-
             }
-
-
 
             if ($respuesta == "ok") {
                 echo '<script>
@@ -274,6 +296,12 @@ class ControladorProductos {
                     });
                 </script>';
             }
+
+            }
+
+
+
+            
         }
 
 

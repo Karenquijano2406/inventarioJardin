@@ -164,7 +164,7 @@
                         
                         
                         echo '
-                            <option value='.$cate["nombre"].'>'.$cate["nombre"].'</option>
+                            <option value="'.$cate["nombre"].'">'.$cate["nombre"].'</option>
                         
                         
                         ';
@@ -296,7 +296,7 @@
                         
                         echo '
                             <option id="editarCategoria"></option>
-                            <option value='.$cate["nombre"].'>'.$cate["nombre"].'</option>
+                            <option value="'.$cate["nombre"].'">'.$cate["nombre"].'</option>
                         
                         ';
                       }
@@ -434,7 +434,7 @@
                         
                         
                         echo '
-                            <option value='.$cate["nombre"].'>'.$cate["nombre"].'</option>
+                            <option value="'.$cate["nombre"].'">'.$cate["nombre"].'</option>
                         
                         
                         ';
@@ -568,6 +568,8 @@
 
                <!-- nombre de la empresa-->
                <div class="form-group">
+               <label>Nombre de Empresa:</label>
+
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-dashboard"></i></span>
                    
@@ -580,7 +582,7 @@
                         
                         echo '
                             
-                            <option value='.$value["empresa"].'>'.$value["empresa"].'</option>
+                            <option value="'.$value["empresa"].'">'.$value["empresa"].'</option>
                         
                         ';
                       }
@@ -597,6 +599,8 @@
 
                 <!--  ingresar TIPO empresa -->
                <div class="form-group">
+               <label>Tipo de Empresa:</label>
+
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-building"></i></span>
                     
@@ -609,7 +613,7 @@
                         
                         echo '
                             
-                            <option value='.$valores["tipoEmpresa"].'>'.$valores["tipoEmpresa"].'</option>
+                            <option value="'.$valores["tipoEmpresa"].'">'.$valores["tipoEmpresa"].'</option>
                         
                         ';
                       }
@@ -626,6 +630,8 @@
 
                 <!--  seleccionar productos -->
                <div class="form-group">
+               <label>Nombre del Producto:</label>
+
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
                     
@@ -638,7 +644,7 @@
                         
                         echo '
                             
-                            <option value='.$datos["nombre"].'>'.$datos["nombre"].'</option>
+                            <option value="'.$datos["nombre"].'">'.$datos["nombre"].'</option>
                         
                         ';
                       }
@@ -751,8 +757,9 @@
 
 
 
-                <!--  seleccionar productos -->
+                <!--  seleccionar cliente-->
                <div class="form-group">
+               <label>Nombre del Cliente:</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
                     
@@ -765,7 +772,7 @@
                         
                         echo '
                             
-                            <option value='.$datos["nombre"].'>'.$datos["nombre"].'</option>
+                            <option value="'.$datos["nombre"].'">'.$datos["nombre"].'</option>
                         
                         ';
                       }
