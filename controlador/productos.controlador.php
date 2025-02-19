@@ -9,6 +9,20 @@ class ControladorProductos {
     }
 
 
+    static public function ctrMostrarProductosEntradas($item, $valor) {
+        $tabla = "entradasp";
+        $respuesta = ModeloProductos::mdlMostrarProductosEntradas($tabla, $item, $valor);
+        return $respuesta;
+    }
+
+
+    static public function ctrMostrarProductosSalidas($item, $valor) {
+        $tabla = "salidasp";
+        $respuesta = ModeloProductos::mdlMostrarProductosSalidas($tabla, $item, $valor);
+        return $respuesta;
+    }
+
+
     static public function ctrCrearProductos() {
         if (isset($_POST["nuevoNombre"])) {
             $tabla = "productos";
@@ -53,9 +67,6 @@ class ControladorProductos {
                 </script>';
             }
         }
-
-
-
         
     }
 
