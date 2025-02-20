@@ -474,6 +474,57 @@ class ControladorProductos {
 
 
 
+    public function ctrDescargarReportesWordProductosEntradas() {
+        if (isset($_GET["productosEWord"])) {
+            
+            $tabla = "entradasp";
+            $item = null;
+            $valor = null;
+    
+            // Obtener los productos desde el modelo
+            $productos = ModeloProductos::mdlMostrarProductosEntradas($tabla, $item, $valor);
+        }
+    
+        // Nombre del archivo Word a generar
+        $name = $_GET["productosEWord"] . '.doc';
+    
+        // Configuración de los encabezados HTTP para descarga de archivo Word
+        header('Expires: 0');
+        header('Cache-Control: private');
+        header('Content-type: application/vnd.ms-doc');
+        header('Content-Disposition: attachment; filename="' . $name . '"');
+    
+       // Iniciar la tabla y definir los encabezados de las columnas
+       echo utf8_decode("<table border='1'>
+       <tr>
+           <td style='text-align:center; font-weight:bold;'>Nombre Empresa</td>
+           <td style='text-align:center; font-weight:bold;'>Tipo Empresa</td>
+           <td style='text-align:center; font-weight:bold;'>Nombre Producto</td>
+           <td style='text-align:center; font-weight:bold;'>Entrada</td>
+           <td style='text-align:center; font-weight:bold;'>Fecha</td>
+           
+       </tr>");
+
+   // Recorrer los prodcutos y generar las filas de la tabla
+   foreach ($productos as $key => $datos) {
+       echo utf8_decode("<tr>
+           <td style='text-align:center;'>" . $datos["nombreEmpresa"] . "</td>
+           <td style='text-align:center;'>" . $datos["tipoEmpresa"] . "</td>
+           <td style='text-align:center;'>" . $datos["nombreProducto"] . "</td>
+           <td style='text-align:center;'> " . $datos["entradap"] . "</td>
+           <td style='text-align:center;'> " . $datos["fecha"] . "</td>
+           
+       </tr>");
+   }
+
+   // Cerrar la tabla
+   echo "</table>";
+   exit(); // Para evitar que el script continúe ejecutándose después de la exportación
+    }
+
+
+
+
     public function ctrDescargarReportesCSVProductos() {
         if (isset($_GET["productosCSV"])) {
             $tabla = "productos";
@@ -499,6 +550,40 @@ class ControladorProductos {
     
         foreach ($productos as $key => $values) {
             $datos .= "$values[categoria],$values[nombre],$values[descripcion],$values[precioCompra],$values[precioVenta],$values[stock]\r\n";
+        }
+    
+        echo utf8_decode($datos);
+        exit();
+    }
+
+
+
+
+    public function ctrDescargarReportesCSVProductosEntradas() {
+        if (isset($_GET["productosECSV"])) {
+            $tabla = "entradasp";
+            $item = null;
+            $valor = null;
+    
+            // Obtener los productos desde el modelo
+            $productos = ModeloProductos::mdlMostrarProductosEntradas($tabla, $item, $valor);
+        }
+    
+        // Nombre del archivo CSV
+        $name = $_GET["productosECSV"] . '.csv';
+    
+        // Configuración de los encabezados HTTP
+        header('Expires: 0');
+        header('Cache-Control: private');
+        header('Content-type: text/csv');
+        header('Content-Disposition: attachment; filename="' . $name . '"');
+    
+        // Crear contenido del CSV
+        $datos = "";
+        $datos .= "NOMBRE EMPRESA,TIPO EMPRESA,NOMBRE PRODUCTO,ENTRADA,FECHA\r\n";
+    
+        foreach ($productos as $key => $values) {
+            $datos .= "$values[nombreEmpresa],$values[tipoEmpresa],$values[nombreProducto],$values[entradap],$values[fecha]\r\n";
         }
     
         echo utf8_decode($datos);
