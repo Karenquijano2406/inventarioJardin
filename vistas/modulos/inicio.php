@@ -22,7 +22,15 @@
         
 
       <?php 
+
+      if ($_SESSION['perfil'] == "Administrador") {
+
         include "inicio/cajasSuperiores.php";
+      }
+
+
+
+        
         
       ?>
 
@@ -30,6 +38,26 @@
 
         
       </div>
+
+
+
+      <!-- para en inicio de sesion como Especial -->
+    <div class="col-lg-12">
+      <?php 
+      if ($_SESSION['perfil'] == "Especial") {
+        echo '<div class="box box-success">
+          <div class="box-header">
+            <h1 class="">Bienvenid@ '.$_SESSION["nombre"].'</h1>
+
+          </div>
+
+        </div>';
+      }
+      
+      ?>
+
+
+    </div>
 
 
 
@@ -41,4 +69,9 @@
 
     
     </section>
+
+
+
+  
+
 </div>

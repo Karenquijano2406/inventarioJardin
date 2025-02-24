@@ -16,7 +16,14 @@
       <ul class="sidebar-menu" data-widget="tree">
 
 
-      <li>
+<!-- para las sesiones de Administrador y especial(no mostrar todos los modulos) -->
+      <?php
+
+      if ($_SESSION['perfil'] == "Administrador") {
+        
+        echo'
+
+              <li>
           <a href="inicio">
             <i class="fa fa-home"></i> <span>Inicio</span>
             <span class="pull-right-container">
@@ -53,8 +60,16 @@
           </a>
         </li>
 
+        ';
+      }
 
+       ?>
+
+       <?php
+       if ($_SESSION["perfil"] == "Administrador" || $_SESSION['perfil'] == "Especial") {
         
+        echo'
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-cubes"></i> <span>Almacén</span>
@@ -70,10 +85,20 @@
             <li><a href="inventario"><i class="fa fa-circle-o"></i> Inventario</a></li>
           </ul>
         </li>
+        
+        
+        ';      
+       }
+       
+       ?>
 
 
+       <?php 
+       if ($_SESSION["perfil"] == "Administrador") {
+        
+        echo '
 
-        <li>
+                <li>
           <a href="clientes">
           <i class="fa fa-user"></i> <span>Clientes</span>
           <span class="pull-right-container">
@@ -89,6 +114,26 @@
           </span>
           </a>
       </li>
+        
+        
+        ';
+       }
+
+       
+       ?>
+
+
+
+
+
+
+
+        
+        
+
+
+
+
 
 
        
