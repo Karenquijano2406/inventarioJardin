@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <!-- //boton agregar usuarios -->
+            <!-- //boton agregar prodcutos -->
             <div class="box-header display">
 
               <button class="btn btn-primary" data-toggle="modal" data-target="#modalProductos">Agregar Producto</button>
@@ -834,3 +834,16 @@
     </div>
 
    </div>
+
+
+
+
+
+   <?php
+
+
+$EliminarP = new ControladorProductos();
+$EliminarP->ctrBorrarProductos();
+
+
+?>
