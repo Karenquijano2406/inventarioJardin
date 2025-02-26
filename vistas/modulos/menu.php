@@ -11,20 +11,24 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
 
 
-      <li>
+      
+<!-- para las sesiones de Administrador y especial(no mostrar todos los modulos) -->
+      <?php
+
+      if ($_SESSION['perfil'] == "Administrador") {
+
+        echo'
+              <li>
           <a href="inicio">
             <i class="fa fa-home"></i> <span>Inicio</span>
             <span class="pull-right-container">
             </span>
           </a>
       </li>
-
-
       <li>
           <a href="empresa">
           <i class="fa fa-building"></i> <span>Empresa</span>
@@ -32,8 +36,6 @@
           </span>
           </a>
       </li>
-
-
       <li>
           <a href="categorias">
           <i class="fa fa-th"></i> <span>Categorías</span>
@@ -41,10 +43,6 @@
           </span>
           </a>
       </li>
-
-
-
-
         <li>
           <a href="usuarios">
             <i class="fa fa-users"></i> <span>Usuarios</span>
@@ -52,9 +50,17 @@
             </span>
           </a>
         </li>
+        ';
+      }
 
+       ?>
 
-        
+       
+
+       <?php
+       if ($_SESSION["perfil"] == "Administrador" || $_SESSION['perfil'] == "Especial") {
+
+        echo'
         <li class="treeview">
           <a href="#">
             <i class="fa fa-cubes"></i> <span>Almacén</span>
@@ -66,22 +72,29 @@
             <li class="active"><a href="productos"><i class="fa fa-circle-o"></i> Productos</a></li>
             <li><a href="p-entradas"><i class="fa fa-circle-o"></i> Productos de Entrada</a></li>
             <li><a href="p-salidas"><i class="fa fa-circle-o"></i> Productos de Salida</a></li>
-
             <li><a href="inventario"><i class="fa fa-circle-o"></i> Inventario</a></li>
           </ul>
         </li>
+        
+        
+        ';      
+       }
+
+       ?>
 
 
+       <?php 
+       if ($_SESSION["perfil"] == "Administrador") {
 
+        echo '
         <li>
+              
           <a href="clientes">
           <i class="fa fa-user"></i> <span>Clientes</span>
           <span class="pull-right-container">
           </span>
           </a>
       </li>
-
-
       <li>
           <a href="proveedores">
           <i class="fa fa-truck"></i> <span>Proveedores</span>
@@ -89,9 +102,28 @@
           </span>
           </a>
       </li>
+        
+        
+        ';
+       }
 
 
-       
+       ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
       </ul>
