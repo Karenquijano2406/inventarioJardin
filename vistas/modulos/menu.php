@@ -65,7 +65,7 @@
           <ul class="treeview-menu">
             <li class="active"><a href="productos"><i class="fa fa-circle-o"></i> Productos</a></li>
             <li><a href="p-entradas"><i class="fa fa-circle-o"></i> Productos de Entrada</a></li>
-            <li><a href="p-salida"><i class="fa fa-circle-o"></i> Productos de Salida</a></li>
+            <li><a href="p-salidas"><i class="fa fa-circle-o"></i> Productos de Salida</a></li>
 
             <li><a href="inventario"><i class="fa fa-circle-o"></i> Inventario</a></li>
           </ul>

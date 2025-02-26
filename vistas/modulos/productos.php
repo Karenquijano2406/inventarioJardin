@@ -139,7 +139,7 @@
 
 
 
-<!-- ventana modal Ingresar productos -->
+<!-- ventana modal Agregar productos -->
    <div id="modalProductos" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -406,137 +406,6 @@
 
    </div>
 
-
-
-
-   <!-- ventana modal Ingresar productos -->
-   <div id="modalProductos" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form role="form" method="post" enctype="multipart/form-data">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Agregar Producto</h4>
-
-            </div>
-            <div class="modal-body">
-              <div class="box-body">
-
-              <!-- ingresar categoria -->
-              <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                    <select class="form-control input-lg" name="categoria">
-                      <?php
-                      $categorias = ControladorCategorias::ctrMostrarCategorias(null,null);
-                      
-                      foreach ($categorias as $key => $cate) {
-                        
-                        
-                        echo '
-                            <option value="'.$cate["nombre"].'">'.$cate["nombre"].'</option>
-                        
-                        
-                        ';
-                      }
-                       ?>
-                        
-
-                    </select>
-
-                  </div>
-
-                </div>
-
-
-              <!-- Ingresar nombre -->
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-list"></i></span>
-                    <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingrese Nombre">
-
-                  </div>
-
-                </div>
-<!-- 
-                ingresar descripcion -->
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
-                    <input type="text" class="form-control input-lg" name="nuevoDescripcion" placeholder="Ingrese Descripción">
-
-                  </div>
-
-                </div>
-
-<!-- 
-                ingresar precio compra -->
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-usd"></i></span>
-                    <input type="number" class="form-control input-lg" min="1" name="nuevoPrecioCompra" placeholder="Ingrese Precio de Compra">
-
-                  </div>
-
-                </div>
-
-
-                <!-- ingresar Precio venta -->
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-usd"></i></span>
-                    <input type="number" class="form-control input-lg" min="1" name="nuevoPrecioVenta" placeholder="Ingrese Precio de Venta">
-
-                  </div>
-
-                </div>
-
-
-                <!-- ingresar stock -->
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-cubes"></i></span>
-                    <input type="number" class="form-control input-lg" min="1" name="nuevoStock" placeholder="Ingrese Stock">
-
-                  </div>
-
-                </div>
-
-         
-
-
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-
-                </div>
-
-
-
-
-
-
-              </div>
-
-            </div>
-
-
-        </form>
-
-
-        <?php 
-
-        $crearProducto = new ControladorProductos();
-        $crearProducto->ctrCrearProductos();
-        
-        ?>
-
-
-      </div>
-
-    </div>
-
-   </div>
 
 
 
@@ -846,4 +715,4 @@ $EliminarP = new ControladorProductos();
 $EliminarP->ctrBorrarProductos();
 
 
-?>
+  ?>
