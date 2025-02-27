@@ -97,31 +97,25 @@ $totalproveedores = count($proveedores);
                     </tr>
                 </thead>
                 <tbody>
-                    
-                        <?php
+                    <?php
+                    $productos = ControladorProductos::ctrMostrarProductos(null, null);
 
-                        $productos = ControladorProductos::ctrMostrarProductos(null,null);
+                    if (!empty($productos)) {
+                        // Obtener solo los últimos 5 productos
+                        $ultimosProductos = array_slice($productos, -5);
 
-                        for ($i=0; $i < @$productos[$i]; $i++) { 
-
-                            echo " <tr>
-
-                            <td>".$productos[$i]["categoria"]."</td>
-                            <td>".$productos[$i]["nombre"]."</td>
-                            <td>$ ".$productos[$i]["precioCompra"]."</td>
-                            <td>".$productos[$i]["stock"]."</td>
-
-                            </tr>
-                            ";
+                        foreach ($ultimosProductos as $producto) {
+                            echo "<tr>
+                                <td>{$producto['categoria']}</td>
+                                <td>{$producto['nombre']}</td>
+                                <td>$ {$producto['precioCompra']}</td>
+                                <td>{$producto['stock']}</td>
+                            </tr>";
                         }
-                        
-                        ?>
-                    
-
-
-
-
-                    
+                    } else {
+                        echo "<tr><td colspan='4' class='text-center'>No hay productos recientes</td></tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -131,6 +125,7 @@ $totalproveedores = count($proveedores);
         <a href="productos" class="btn btn-sm btn-default btn-flat pull-right">Ver todos los productos</a>
     </div>
 </div>
+
 
 
 
