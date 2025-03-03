@@ -171,6 +171,7 @@ class ControladorProductos {
                
             );
 
+
             $respuesta = ModeloProductos::mdlIngresarProductosEntrada($tabla, $datos);
 
             $tablaDos = "productos";
@@ -234,7 +235,7 @@ class ControladorProductos {
             $valor = $_POST['idSalida'];
             $traerProducto = ControladorProductos::ctrMostrarProductos($item,$valor);
 
-            var_dump($traerProducto);
+            // var_dump($traerProducto);
 
 
             if ($_POST['salidaStock'] > $traerProducto["stock"]) {
@@ -257,6 +258,26 @@ class ControladorProductos {
                 $valor = $_POST['idSalida'];
 
                 $tabla = "salidasp";
+                //para notificaciones
+                $tablaDos = "notificacionesStock";
+
+
+
+                //se le pone el numero 5 para que a partir de 5 productos se empiece a enviar las notificaciones de que es necesario comprar mas producto
+                if ($traerProducto["stock"] <=5) {
+
+
+                        // para las notificaciones del stock disponible o si falta por comprar producto
+                        $datosDos = array("idproducto" => $_POST['idSalida'],
+                        "stock" => $_POST['salidaStock'],
+                        "valorStock" =>1,
+                        
+                    );
+
+                        //para las notificaciones
+                        $respuestaDos = ModeloNotificaciones::mdlIngresarProductosNotificaciones($tablaDos, $datosDos);
+
+                }
 
            
 
@@ -266,6 +287,8 @@ class ControladorProductos {
                 "salidap" => $_POST['salidaStock'],
                
             );
+
+
 
             $respuesta = ModeloProductos::mdlIngresarProductosSalidas($tabla, $datos);
 

@@ -17,8 +17,10 @@
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           
+
+
       
-          <!-- Notifications: style can be found in dropdown.less -->
+          <!-- Notifications: style can be found in dropdown.less
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
@@ -27,7 +29,7 @@
             <ul class="dropdown-menu">
               <li class="header">You have 10 notifications</li>
               <li>
-                <!-- inner menu: contains the actual data -->
+                 //inner menu: contains the actual data 
                 <ul class="menu">
                   <li>
                     <a href="#">
@@ -59,7 +61,7 @@
               </li>
               <li class="footer"><a href="#">View all</a></li>
             </ul>
-          </li>
+          </li> -->
 
 
        

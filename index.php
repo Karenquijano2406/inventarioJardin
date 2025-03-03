@@ -14,6 +14,7 @@ include "modelos/categorias.modelo.php";
 include "modelos/clientes.modelo.php";
 include "modelos/proveedores.modelo.php";
 include "modelos/productos.modelo.php";
+include "modelos/notificaciones.modelo.php";
 
 
 
