@@ -1,42 +1,69 @@
+<?php 
+if ($_SESSION['perfil'] != "Administrador") {
+    return;
+}
+
+$item = null;
+$valor = null;
+
+$notificaciones = ControladorNotificaciones::ctrMostrarNotificaciones($item,$valor);
+$suma = ControladorNotificaciones::ctrSumaNotificaciones();
+
+?>
+
 <!-- Notifications: style can be found in dropdown.less -->
 <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <i class="fa fa-bell-o" style="font-size: 20px;"></i>
+
+
+
+              <span class="label label-warning"><?php echo $suma["totalvalor"]; ?></span>
+
+
             </a>
+
+
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+
+            
+              <li class="header">Tu tienes <?php echo $suma["totalvalor"]; ?> notificaciones</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+
+
+                <?php 
+                foreach ($notificaciones as $key => $valorN) {
+                    $item = "id";
+                    $valor = $valorN["idproducto"];
+
+                    $pro = ControladorProductos::ctrMostrarProductos($item,$valor);
+
+                    echo '
+
+                    <li>
+                    <a href="productos" class="actualizarnotificaciones" item="valorStock">
+                      <i class="fa fa-users text-aqua"></i>
+
+                      El producto '.$pro["nombre"].' <br> le quedan '.$pro["stock"].' existencias <br>
+
+
+
                     </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
-                    </a>
-                  </li>
+                    </li>
+
+                    ';
+                }
+                ?>
+
+
+
+
+                  
+                  
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
+              <li class="footer"><a href="#">Ver Todo</a></li>
             </ul>
           </li>

@@ -6,6 +6,7 @@ include "controlador/categorias.controlador.php";
 include "controlador/clientes.controlador.php";
 include "controlador/proveedores.controlador.php";
 include "controlador/productos.controlador.php";
+include "controlador/notificaciones.controlador.php";
 
 
 include "modelos/usuarios.modelo.php";
