@@ -185,6 +185,7 @@ include "modulos/footer.php";
 <script src="vistas/js/proveedores.js"></script>
 <script src="vistas/js/productos.js"></script>
 <script src="vistas/js/entrada.js"></script>
+<script src="vistas/js/notificaciones.js"></script>
 
 
 

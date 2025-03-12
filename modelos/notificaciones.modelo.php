@@ -4,11 +4,12 @@ require_once "conexion.php";
 class ModeloNotificaciones {
 
     static public function mdlIngresarProductosNotificaciones($tablaDos, $datosDos) {
-        $stmt = Conexion::Conectar()->prepare("INSERT INTO $tablaDos (idproducto, stock) 
-            VALUES (:idproducto, :stock)");
+        $stmt = Conexion::Conectar()->prepare("INSERT INTO $tablaDos (idproducto,stock,valorStock) 
+            VALUES (:idproducto, :stock, :valorStock)");
 
         $stmt->bindParam(":idproducto", $datosDos["idproducto"], PDO::PARAM_INT);
         $stmt->bindParam(":stock", $datosDos["stock"], PDO::PARAM_INT);
+        $stmt->bindParam(":valorStock", $datosDos["valorStock"], PDO::PARAM_INT);
         
 
         if ($stmt->execute()) {
@@ -49,6 +50,25 @@ class ModeloNotificaciones {
             $stmt->execute();
             return $stmt->fetch();
         
+
+        $stmt->close();
+        $stmt = null;
+    }
+
+
+
+    static public function mdlActualizarNotificaciones($tabla, $item,$valor) {
+        $stmt = Conexion::Conectar()->prepare("UPDATE $tabla SET $item = :$item");
+
+        $stmt->bindParam(":".$item,$valor, PDO::PARAM_INT);
+        
+       
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
 
         $stmt->close();
         $stmt = null;

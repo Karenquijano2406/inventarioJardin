@@ -40,13 +40,17 @@ $suma = ControladorNotificaciones::ctrSumaNotificaciones();
 
                     $pro = ControladorProductos::ctrMostrarProductos($item,$valor);
 
+
+                    
+
+                
                     echo '
 
                     <li>
                     <a href="productos" class="actualizarnotificaciones" item="valorStock">
-                      <i class="fa fa-users text-aqua"></i>
+                    <i class="fa fa-product-hunt text-red"></i>
 
-                      El producto '.$pro["nombre"].' <br> le quedan '.$pro["stock"].' existencias <br>
+                      El producto '.$pro["nombre"].' <br> le quedan '.$pro["stock"].' existencias <br> ¡Es hora de hacer compras! <br>
 
 
 
@@ -54,6 +58,10 @@ $suma = ControladorNotificaciones::ctrSumaNotificaciones();
                     </li>
 
                     ';
+                    // }
+                    
+
+
                 }
                 ?>
 
@@ -64,6 +72,6 @@ $suma = ControladorNotificaciones::ctrSumaNotificaciones();
                   
                 </ul>
               </li>
-              <li class="footer"><a href="#">Ver Todo</a></li>
+              <li class="footer"><a href="productos">Ver Todo</a></li>
             </ul>
           </li>

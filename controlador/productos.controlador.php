@@ -255,29 +255,38 @@ class ControladorProductos {
 
             }else {
 
-                $valor = $_POST['idSalida'];
+            
+            // $item = "id";
+            // $valor = $_POST['idSalida'];
+            // $traerProducto = ControladorProductos::ctrMostrarProductos($item,$valor);
+
+
+
+               
 
                 $tabla = "salidasp";
-                //para notificaciones
-                $tablaDos = "notificacionesStock";
+                
 
 
 
-                //se le pone el numero 5 para que a partir de 5 productos se empiece a enviar las notificaciones de que es necesario comprar mas producto
-                if ($traerProducto["stock"] <=5) {
+                // //se le pone el numero 3 para que a partir de 3 productos se empiece a enviar las notificaciones de que es necesario comprar mas producto
+                // if ($traerProducto["stock"] <= 3) {
+
+                //     //para notificaciones
+                // $tablaDos = "notificacionesstock";
 
 
-                        // para las notificaciones del stock disponible o si falta por comprar producto
-                        $datosDos = array("idproducto" => $_POST['idSalida'],
-                        "stock" => $_POST['salidaStock'],
-                        "valorStock" =>1,
+                //  // para las notificaciones del stock disponible o si falta por comprar producto
+                // $datosDos = array("idproducto" => $_POST['idSalida'],
+                // "stock" => $_POST['salidaStock'],
+                //  "valorStock" =>1
                         
-                    );
+                //     );
 
-                        //para las notificaciones
-                        $respuestaDos = ModeloNotificaciones::mdlIngresarProductosNotificaciones($tablaDos, $datosDos);
+                //         //para las notificaciones
+                //         $respuestaDos = ModeloNotificaciones::mdlIngresarProductosNotificaciones($tablaDos, $datosDos);
 
-                }
+                // }
 
            
 
@@ -302,6 +311,39 @@ class ControladorProductos {
 
 
             }
+
+            
+
+
+
+            $item = "id";
+            $valor = $_POST['idSalida'];
+            $traerProducto = ControladorProductos::ctrMostrarProductos($item,$valor);
+
+
+
+            //se le pone el numero 3 para que a partir de 3 productos se empiece a enviar las notificaciones de que es necesario comprar mas producto
+            if ($traerProducto["stock"] <= 3) {
+
+                //para notificaciones
+            $tablaDos = "notificacionesstock";
+
+
+             // para las notificaciones del stock disponible o si falta por comprar producto
+            $datosDos = array("idproducto" => $_POST['idSalida'],
+            "stock" => $_POST['salidaStock'],
+             "valorStock" =>1
+                    
+                );
+
+                    //para las notificaciones
+                    $respuestaDos = ModeloNotificaciones::mdlIngresarProductosNotificaciones($tablaDos, $datosDos);
+
+            }
+
+
+
+
 
             if ($respuesta == "ok") {
                 echo '<script>

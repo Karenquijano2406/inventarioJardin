@@ -1,7 +1,7 @@
-$(".actualizarnotificaciones").click (function(e) {
-    e.preventFDefault();
+$(".actualizarnotificaciones").click(function(e) {
+    e.preventDefault();
 
-    var $item = $(this).attr("item");
+    var item = $(this).attr("item");
     
 
     var $datos = new FormData();
@@ -14,7 +14,7 @@ $(".actualizarnotificaciones").click (function(e) {
         cache: false,
         contentType: false,
         processData: false,
-        dataType: "json",
+        
         success: function(respuesta) {
             console.log(respuesta);  // Verifica si los datos que recibes son correctos
 
