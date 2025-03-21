@@ -205,4 +205,111 @@ class ModeloProductos {
     }
 
 
+
+
+
+
+    // Consulta de productos más vendidos (según salidas)
+    public static function mdlProductosMasVendidos($fechaInicio, $fechaFin) {
+        // Consulta para obtener productos más vendidos en el rango de fechas
+        $stmt = Conexion::conectar()->prepare(
+            "SELECT sp.nombrep AS producto, SUM(sp.salidap) AS cantidadVendida
+            FROM salidasp sp
+            WHERE DATE(sp.fecha) BETWEEN :fechaInicio AND :fechaFin
+            GROUP BY sp.nombrep
+            ORDER BY cantidadVendida DESC"
+        );
+    
+        $stmt->bindParam(":fechaInicio", $fechaInicio, PDO::PARAM_STR);
+        $stmt->bindParam(":fechaFin", $fechaFin, PDO::PARAM_STR);
+    
+        $stmt->execute();
+    
+        // Obtener todos los resultados de la consulta
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Si hay resultados, procesamos para obtener el o los productos más vendidos
+        if (!empty($resultados)) {
+            // Encontrar la mayor cantidad vendida
+            $maxCantidad = max(array_column($resultados, 'cantidadVendida'));
+    
+            // Filtrar los productos que tienen la cantidad máxima vendida
+            $productosMasVendidos = array_filter($resultados, function($producto) use ($maxCantidad) {
+                return $producto['cantidadVendida'] == $maxCantidad;
+            });
+    
+            return $productosMasVendidos;
+        }
+    
+        return []; // Si no hay resultados, devolver un array vacío
+    }
+    
+
+    
+
+    
+    
+
+
+
+        // Método para obtener el historial solo de entradas de productos
+        // Método para obtener el historial de entradas de productos
+    public static function mdlHistorialEntradas($fechaInicio, $fechaFin) {
+        $stmt = Conexion::conectar()->prepare(
+            "SELECT e.nombreProducto AS producto, SUM(e.entradap) AS cantidadEntrada, e.fecha
+            FROM entradasp e
+            WHERE DATE(e.fecha) BETWEEN :fechaInicio AND :fechaFin
+            GROUP BY e.nombreProducto
+            ORDER BY cantidadEntrada DESC"
+        );
+
+        $stmt->bindParam(":fechaInicio", $fechaInicio, PDO::PARAM_STR);
+        $stmt->bindParam(":fechaFin", $fechaFin, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+
+
+    // Método para obtener el historial solo de salidas de productos
+        // Método para obtener el historial de salidas de productos
+    public static function mdlHistorialSalidas($fechaInicio, $fechaFin) {
+        $stmt = Conexion::conectar()->prepare(
+            "SELECT s.nombrep AS producto, SUM(s.salidap) AS cantidadSalida, s.fecha
+            FROM salidasp s
+            WHERE DATE(s.fecha) BETWEEN :fechaInicio AND :fechaFin
+            GROUP BY s.nombrep
+            ORDER BY cantidadSalida DESC"
+        );
+
+        $stmt->bindParam(":fechaInicio", $fechaInicio, PDO::PARAM_STR);
+        $stmt->bindParam(":fechaFin", $fechaFin, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+
+
+
+    
+    
+
+    
+    
+    
+
+
+
+
+
+
+
 }

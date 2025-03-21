@@ -788,6 +788,30 @@ class ControladorProductos {
         exit();
     }
     
+
+
+
+
+
+        // Método para obtener los productos más vendidos
+        public static function ctrProductosMasVendidos($fechaInicio, $fechaFin) {
+            $respuesta = ModeloProductos::mdlProductosMasVendidos($fechaInicio, $fechaFin);
+            return $respuesta;
+        }
+    
+            // Método para obtener el historial solo de entradas de productos
+            public static function ctrHistorialEntradas($fechaInicio, $fechaFin) {
+                $respuesta = ModeloProductos::mdlHistorialEntradas($fechaInicio, $fechaFin);
+                return $respuesta;
+            }
+
+            // Método para obtener el historial solo de salidas de productos
+            public static function ctrHistorialSalidas($fechaInicio, $fechaFin) {
+                $respuesta = ModeloProductos::mdlHistorialSalidas($fechaInicio, $fechaFin);
+                return $respuesta;
+            }
+
+    
     
     
 
