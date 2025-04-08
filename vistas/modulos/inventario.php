@@ -41,49 +41,54 @@
                   <th>Nombre</th>
                   <th>Descripción</th>
                   <th>Stock</th>
+                  <!-- CAMBIO 1 -->
+                  <th>Caducidad</th>
                   
                 </tr>
                 </thead>
+
+                <!-- CAMBIO 2 EN TODO EL TBODY -->
                 <tbody>
+                    <?php 
 
-                <?php 
+                    $productos = ControladorProductos::ctrMostrarProductos(null,null);
 
-                $productos = ControladorProductos::ctrMostrarProductos(null,null);
+                    foreach ($productos as $key => $datos) {
 
-                foreach ($productos as $key => $datos) {
+                        // para darle color a los botones segun la cantidad de existencia
+                        if ($datos["stock"] <= 3 ){
+                            $stock = "<div class='btn btn-danger'>".$datos["stock"]."</div>";
 
-                    // para darle color a los botones segun la cantidad de existencia
-                    if ($datos["stock"] <= 3 ){
-                        $stock = "<div class='btn btn-danger'>".$datos["stock"]."</div>";
+                        } elseif ($datos["stock"] >= 4 && $datos["stock"] <= 10) { 
+                            $stock = "<div class='btn btn-warning'>".$datos["stock"]."</div>";
+                        } else {
+                            $stock = "<div class='btn btn-success'>".$datos["stock"]."</div>";
+                        }
 
-                    }elseif ($datos["stock"] >= 4 && $datos["stock"] <= 10) { 
-                        $stock = "<div class='btn btn-warning'>".$datos["stock"]."</div>";
-                    }else {
-                        $stock = "<div class='btn btn-success'>".$datos["stock"]."</div>";
+                        // valor actual de la fecha de caducidad
+                        $caducidad = $datos["caducidad"];
+
+                        echo '
+
+                        <tr>
+
+                          <td>'.($key+1).'</td>
+                          <td>'.$datos["nombre"].'</td>
+                          <td>'.$datos["descripcion"].'</td>
+                          <td>'.$stock.'</td>
+
+                          <td>
+                            <input type="date" 
+                                  class="form-control fechaCaducidad" 
+                                  data-id="'.$datos["id"].'" 
+                                  value="'.$caducidad.'">
+                          </td>
+
+                        </tr>';
                     }
+                    ?>
+                    </tbody>
 
-
-
-                  
-                  echo '
-
-                  <tr>
-
-                    <td>'.($key+1).'</td>
-                    <td>'.$datos["nombre"].'</td>
-                    <td>'.$datos["descripcion"].'</td>
-                    <td>'.$stock.'</td>
-
-                    
-                  
-                  </tr>';
-
-
-                }
-                
-                
-                ?>
-                </tbody>
 
               </table>
             </div>
@@ -98,3 +103,48 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+                                              <!-- CODIGO ORIGINAL -->
+
+                                              <!-- CAMBIO 3  para la caducidad-->
+
+
+                                              <script>
+$(document).on("change", ".fechaCaducidad", function() {
+  
+  let fecha = $(this).val();
+  let idProducto = $(this).data("id");
+
+  let datos = new FormData();
+  datos.append("idProducto", idProducto);
+  datos.append("fechaCaducidad", fecha);
+
+  $.ajax({
+    url: "ajax/productos.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function(respuesta) {
+      if (respuesta === "ok") {
+        Swal.fire({
+          icon: "success",
+          title: "Fecha actualizada",
+          text: "La fecha de caducidad ha sido guardada correctamente.",
+          timer: 2000,
+          showConfirmButton: false
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "No se pudo guardar la fecha.",
+        });
+      }
+    }
+  });
+
+});
+</script>

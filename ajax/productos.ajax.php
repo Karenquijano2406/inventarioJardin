@@ -30,3 +30,18 @@ if (isset($_POST['idProducto'])) {
     $editar->ajaxEditarProductos();
 
 }
+
+
+
+//para la CADUCIDAD
+if (isset($_POST["idProducto"]) && isset($_POST["fechaCaducidad"])) {
+  
+    $tabla = "productos";
+    $id = $_POST["idProducto"];
+    $fecha = $_POST["fechaCaducidad"];
+  
+    $respuesta = ModeloProductos::mdlActualizarCaducidad($tabla, $id, $fecha);
+  
+    echo $respuesta;
+  }
+  

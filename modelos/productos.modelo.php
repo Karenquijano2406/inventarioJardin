@@ -300,7 +300,22 @@ class ModeloProductos {
 
 
     
-    
+    static public function mdlActualizarCaducidad($tabla, $id, $fecha) {
+  
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET caducidad = :fecha WHERE id = :id");
+      
+        $stmt->bindParam(":fecha", $fecha, PDO::PARAM_STR);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+      
+        if ($stmt->execute()) {
+          return "ok";
+        } else {
+          return "error";
+        }
+      
+        $stmt = null;
+      }
+      
 
     
     
