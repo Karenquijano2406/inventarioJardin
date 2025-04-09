@@ -84,7 +84,7 @@
                                    class="form-control fechaCaducidad" 
                                    data-id="'.$datos["id"].'" 
                                    value="'.$caducidad.'">
-                            <div style="margin-top: 5px;">'.$mensajeCaducidad.'</div>
+                            <div style="margin-top: 5px;" class="emoji">'.$mensajeCaducidad.'</div> <!-- Aquí está el emoji dinámico -->
                           </td>
                         </tr>';
                     }
@@ -106,6 +106,36 @@
   <!-- /.content-wrapper -->
 
 <script>
+// Función para actualizar el estado de caducidad cuando se carga la página
+$(document).ready(function() {
+  $(".fechaCaducidad").each(function() {
+    let fecha = $(this).val();
+    let idProducto = $(this).data("id");
+    let mensajeCaducidad = '';
+    let fechaHoy = new Date();
+    let fechaCaducidadObj = new Date(fecha);
+
+    // Si hay fecha de caducidad
+    if (fecha) {
+      let diferencia = (fechaCaducidadObj - fechaHoy) / (1000 * 60 * 60 * 24); // Diferencia en días
+
+      if (diferencia < 0) {
+        mensajeCaducidad = "🛑 <small>Caducado</small>";
+      } else if (diferencia <= 7) {
+        mensajeCaducidad = "⏳ <small>Pronto a caducar</small>";
+      } else {
+        mensajeCaducidad = "✅ <small>Vigente</small>";
+      }
+    } else {
+      mensajeCaducidad = "❓ <small>Sin fecha</small>";
+    }
+
+    // Actualizamos el mensaje en la columna de Estado
+    $(this).closest("tr").find(".emoji").html(mensajeCaducidad);
+  });
+});
+
+// Lógica para manejar el cambio de fecha por parte del usuario
 $(document).on("change", ".fechaCaducidad", function() {
   let fecha = $(this).val();
   let idProducto = $(this).data("id");
@@ -139,5 +169,21 @@ $(document).on("change", ".fechaCaducidad", function() {
       }
     }
   });
+
+  // Lógica para cambiar el emoji dependiendo de la nueva fecha
+  let fechaCaducidad = new Date(fecha);
+  let fechaHoy = new Date();
+  let diffTime = fechaCaducidad - fechaHoy;
+  let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  let emojiContainer = $(this).closest("tr").find(".emoji");
+
+  // Actualizar el emoji después de cambiar la fecha
+  if (diffDays <= 7 && diffDays > 0) {
+    emojiContainer.html("⏳ <small>Pronto a caducar</small>");
+  } else if (diffDays <= 0) {
+    emojiContainer.html("🛑 <small>Caducado</small>");
+  } else {
+    emojiContainer.html("✅ <small>Vigente</small>");
+  }
 });
 </script>
