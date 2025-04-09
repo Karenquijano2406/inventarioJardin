@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-03-2025 a las 13:30:48
+-- Tiempo de generación: 09-04-2025 a las 02:12:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -45,7 +45,8 @@ INSERT INTO `categorias` (`id`, `nombre`, `fecha`) VALUES
 (7, 'Aceites y Grasas', '2025-02-01 00:09:35'),
 (11, 'Verduras', '2025-02-09 19:15:41'),
 (13, 'Plásticos desechables', '2025-02-24 21:59:26'),
-(14, 'Bebidas', '2025-02-27 01:45:33');
+(14, 'Bebidas', '2025-02-27 01:45:33'),
+(15, 'Otros', '2025-04-08 22:57:20');
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,15 @@ INSERT INTO `entradasp` (`id`, `nombreEmpresa`, `tipoEmpresa`, `nombreProducto`,
 (30, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 6, '2025-03-11 23:41:54'),
 (31, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 2, '2025-03-11 23:41:59'),
 (36, 'COMA', 'Mayorista de distribución de abarrotes', 'Vasos de Frappé', 8, '2025-03-12 02:43:02'),
-(37, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 2, '2025-03-12 02:44:14');
+(37, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 2, '2025-03-12 02:44:14'),
+(40, 'COMA', 'Mayorista de distribución de abarrotes', 'Pepinillo', 5, '2025-03-12 17:26:51'),
+(41, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 5, '2025-03-12 17:27:04'),
+(42, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 10, '2025-03-12 17:27:12'),
+(43, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 9, '2025-03-12 17:27:27'),
+(44, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 6, '2025-03-21 04:35:13'),
+(45, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 2, '2025-03-25 20:27:27'),
+(46, 'Frutería Carmelita', 'Distribuidor de Frutas y verduras', 'Bròcoli prueba', 3, '2025-04-04 02:34:51'),
+(47, 'COMA', 'Mayorista de distribución de abarrotes', 'Cereal', 8, '2025-04-08 20:00:15');
 
 -- --------------------------------------------------------
 
@@ -136,9 +145,7 @@ CREATE TABLE `notificacionesstock` (
 --
 
 INSERT INTO `notificacionesstock` (`id`, `idproducto`, `stock`, `valorStock`, `fecha`) VALUES
-(29, 48, 6, 0, '2025-03-12 03:54:00'),
-(30, 32, 4, 0, '2025-03-12 03:54:00'),
-(31, 36, 4, 0, '2025-03-12 03:54:00');
+(37, 55, 4, 1, '2025-04-08 22:58:50');
 
 -- --------------------------------------------------------
 
@@ -154,6 +161,7 @@ CREATE TABLE `productos` (
   `precioCompra` float NOT NULL,
   `precioVenta` float NOT NULL,
   `stock` int(11) NOT NULL,
+  `caducidad` date DEFAULT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -161,13 +169,17 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `categoria`, `nombre`, `descripcion`, `precioCompra`, `precioVenta`, `stock`, `fecha`) VALUES
-(32, 'Cereales y Harinas', 'Cereal', 'Cornflakes', 90, 105, 2, '2025-03-12 03:52:49'),
-(36, 'Verduras', 'Pepinillo', 'pieza', 4, 5, 1, '2025-03-12 03:53:21'),
-(48, 'Plásticos desechables', 'Vasos de Frappé', '14 oz', 78, 78, 3, '2025-03-12 03:51:55'),
-(49, 'Lácteos y Derivados', 'Leche deslactosada light', '900 ml', 18, 22, 12, '2025-03-11 23:41:48'),
-(50, 'Cereales y Harinas', 'Harina de Hotcakes', 'Bolsa grande', 210, 1, 5, '2025-03-12 03:30:39'),
-(51, 'Bebidas', 'Coca cola', 'vidrio 500ml', 15, 27, 3, '2025-03-12 03:34:01');
+INSERT INTO `productos` (`id`, `categoria`, `nombre`, `descripcion`, `precioCompra`, `precioVenta`, `stock`, `caducidad`, `fecha`) VALUES
+(32, 'Cereales y Harinas', 'Cereal', 'Cornflakes', 90, 105, 2, '2025-04-11', '2025-04-09 00:10:16'),
+(36, 'Verduras', 'Pepinillo', 'pieza', 4, 5, 11, '2025-04-10', '2025-04-09 00:10:03'),
+(48, 'Plásticos desechables', 'Vasos de Frappé', '14 oz', 78, 78, 10, NULL, '2025-03-21 04:10:48'),
+(49, 'Lácteos y Derivados', 'Leche deslactosada light', '900 ml', 18, 22, 8, '2025-04-26', '2025-04-08 23:43:11'),
+(50, 'Cereales y Harinas', 'Harina de Hotcakes', 'Bolsa grande', 210, 1, 5, '2026-02-02', '2025-04-09 00:02:28'),
+(51, 'Bebidas', 'Coca cola', 'vidrio 500ml', 15, 27, 10, '2025-12-25', '2025-04-09 00:09:32'),
+(53, 'Lácteos y Derivados', 'Lechera', 'Lata', 18, 18, 12, '2025-08-27', '2025-04-09 00:09:43'),
+(55, 'Verduras', 'Bròcoli prueba', 'Pieza', 8, 12, 3, '2025-05-01', '2025-04-08 22:58:50'),
+(56, 'Carnes y Proteinas', 'Carne Res', '', 75, 75, 4, '2025-04-15', '2025-04-08 23:43:29'),
+(57, 'Otros', 'Inciensos', 'Caja ', 25, 40, 36, '2027-07-21', '2025-04-08 23:43:48');
 
 -- --------------------------------------------------------
 
@@ -220,7 +232,17 @@ INSERT INTO `salidasp` (`id`, `categoriap`, `nombrep`, `nombreCliente`, `salidap
 (43, 'Cereales y Harinas', 'Harina de Hotcakes', 'Publico en general', 7, '2025-03-11 22:23:24'),
 (51, 'Bebidas', 'Coca cola', 'Publico en general', 9, '2025-03-11 22:50:00'),
 (64, 'Bebidas', 'Coca cola', 'Publico en general', 9, '2025-03-11 23:33:39'),
-(70, 'Verduras', 'Pepinillo', 'Publico en general', 1, '2025-03-11 23:47:51');
+(70, 'Verduras', 'Pepinillo', 'Publico en general', 1, '2025-03-11 23:47:51'),
+(84, 'Cereales y Harinas', 'Cereal', 'Publico en general', 4, '2025-03-12 17:27:55'),
+(85, 'Verduras', 'Pepinillo', 'Publico en general', 3, '2025-03-12 18:28:52'),
+(86, 'Bebidas', 'Coca cola', 'Publico en general', 18, '2025-03-20 22:29:11'),
+(87, 'Cereales y Harinas', 'Cereal', 'Publico en general', 18, '2025-03-20 23:09:14'),
+(88, 'Bebidas', 'Coca cola', 'Publico en general', 10, '2025-03-21 04:09:21'),
+(89, 'Plásticos desechables', 'Vasos de Frappé', 'Publico en general', 3, '2025-03-21 04:10:47'),
+(90, 'Verduras', 'Bròcoli prueba', 'Publico en general', 8, '2025-04-04 02:35:05'),
+(91, 'Cereales y Harinas', 'Cereal', 'Publico en general', 3, '2025-04-08 20:00:58'),
+(92, 'Lácteos y Derivados', 'Leche deslactosada light', 'Publico en general', 10, '2025-04-08 22:52:14'),
+(93, 'Verduras', 'Bròcoli prueba', 'Publico en general', 4, '2025-04-08 22:58:50');
 
 -- --------------------------------------------------------
 
@@ -312,13 +334,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `empresa`
@@ -330,19 +352,19 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT de la tabla `entradasp`
 --
 ALTER TABLE `entradasp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `notificacionesstock`
 --
 ALTER TABLE `notificacionesstock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
@@ -354,7 +376,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `salidasp`
 --
 ALTER TABLE `salidasp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
